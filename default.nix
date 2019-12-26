@@ -8,10 +8,21 @@
 
 { pkgs ? import <nixpkgs> {} }:
 
-{
+rec {
   # The `lib`, `modules`, and `overlay` names are special
   lib = import ./lib { inherit pkgs; }; # functions
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
-}
 
+  clonehero-unwrapped = pkgs.callPackage ./pkgs/games/clonehero { };
+
+  clonehero-xdg-wrapper = pkgs.callPackage ./pkgs/games/clonehero/xdg-wrapper.nix {
+    inherit clonehero-unwrapped;
+  };
+
+  clonehero-fhs-wrapper = pkgs.callPackage ./pkgs/games/clonehero/fhs-wrapper.nix {
+    inherit clonehero-unwrapped clonehero-xdg-wrapper;
+  };
+
+  clonehero = clonehero-fhs-wrapper;
+}
