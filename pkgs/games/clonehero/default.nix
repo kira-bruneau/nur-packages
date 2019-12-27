@@ -6,11 +6,11 @@ let
   name = "clonehero";
 in stdenv.mkDerivation rec {
   pname = "${name}-unwrapped";
-  version = "0.23.2";
+  version = "0.23.2.1";
 
   src = fetchurl {
     url = "http://dl.clonehero.net/${name}-v${stdenv.lib.removePrefix "0" version}/${name}-linux.tar.gz";
-    sha256 = "1a8xkmrm57hv8cjr8g2rykgflfyikj9az5g9ac6lzagbmzjny64w";
+    sha256 = "0k75xivydqsxg9n34kk5a1kr4nbqjc6dlnd59mpc4mph10ri4gcr";
   };
 
   nativeBuildInputs = [ autoPatchelfHook ];
