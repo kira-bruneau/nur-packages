@@ -6,14 +6,12 @@ let
   name = "clonehero";
 in stdenv.mkDerivation rec {
   pname = "${name}-unwrapped";
-  version = "0.22.5";
+  version = "0.23.2";
 
   src = fetchurl {
     url = "http://dl.clonehero.net/${name}-v${stdenv.lib.removePrefix "0" version}/${name}-linux.tar.gz";
-    sha256 = "0b3iml1x5j4lz397diyj4p285id12vlwzx0dbyx8r8s23yspq2wg";
+    sha256 = "1a8xkmrm57hv8cjr8g2rykgflfyikj9az5g9ac6lzagbmzjny64w";
   };
-
-  outputs = [ "out" "doc" ];
 
   nativeBuildInputs = [ autoPatchelfHook ];
 
@@ -31,10 +29,6 @@ in stdenv.mkDerivation rec {
     mkdir -p "$out/bin" "$out/share"
     install -Dm755 ${name} "$out/bin"
     cp -r clonehero_Data "$out/share"
-    cp -r Songs "$out/share"
-
-    mkdir -p "$doc/share/${name}"
-    cp README.txt "$doc/share/${name}"
   '';
 
   # Patch required run-time libraries as load-time libraries
