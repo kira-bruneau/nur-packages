@@ -25,4 +25,8 @@ rec {
   };
 
   clonehero = clonehero-fhs-wrapper;
+
+  lightdm-webkit2-greeter = pkgs.callPackage ./pkgs/applications/display-managers/lightdm-webkit2-greeter {
+    inherit lightdm-webkit2-greeter;
+  };
 }
