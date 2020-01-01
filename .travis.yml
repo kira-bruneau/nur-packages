@@ -1,13 +1,13 @@
+os: linux
 language: nix
-
-sudo: false
 
 env:
   global:
     - CACHIX_CACHE=metadark
     - NUR_REPO=metadark
+    - NIXPKGS_ALLOW_UNFREE=1
 
-matrix:
+jobs:
   include:
     - env: NIX_CHANNEL=https://nixos.org/channels/nixpkgs-unstable
     - env: NIX_CHANNEL=https://nixos.org/channels/nixos-unstable
