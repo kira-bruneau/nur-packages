@@ -1,8 +1,10 @@
 { stdenvNoCC, callPackage, makeDesktopItem, fetchurl
-, makeWrapper, unzip }:
+, Foundation
+, makeWrapper, unzip
+}:
 
 let
-  vvvvvv = callPackage ./default.nix {};
+  vvvvvv = callPackage ./default.nix { inherit Foundation; };
   desktopItem = makeDesktopItem {
     name = "vvvvvv";
     desktopName = "VVVVVV";
