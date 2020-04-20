@@ -16,6 +16,10 @@ jobs:
       env: NIX_CHANNEL=https://nixos.org/channels/nixos-unstable
     - os: linux
       env: NIX_CHANNEL=https://nixos.org/channels/nixos-19.09
+    - os: osx
+      env: NIX_CHANNEL=https://nixos.org/channels/nixpkgs-unstable
+    - os: osx
+      env: NIX_CHANNEL=https://nixos.org/channels/nixpkgs-19.09-darwin
 
   allow_failures:
     - os: osx
