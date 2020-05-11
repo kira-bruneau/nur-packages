@@ -32,6 +32,8 @@ rec {
 
   ptvsd = pkgs.python3Packages.callPackage ./pkgs/development/python-modules/ptvsd {};
 
+  pygls = pkgs.python3Packages.callPackage ./pkgs/development/python-modules/pygls {};
+
   runescape-launcher = pkgs.callPackage ./pkgs/games/runescape-launcher/wrapper.nix {};
 
   texlab = pkgs.callPackage ./pkgs/development/tools/misc/texlab {
