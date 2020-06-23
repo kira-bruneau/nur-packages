@@ -36,8 +36,6 @@ rec {
     inherit lightdm-webkit2-greeter;
   };
 
-  ptvsd = pkgs.python3Packages.callPackage ./pkgs/development/python-modules/ptvsd {};
-
   pygls = pkgs.python3Packages.callPackage ./pkgs/development/python-modules/pygls {};
 
   runescape-launcher = pkgs.callPackage ./pkgs/games/runescape-launcher/wrapper.nix {};
