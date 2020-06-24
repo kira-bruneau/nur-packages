@@ -18,8 +18,8 @@ buildPythonApplication rec {
   propagatedBuildInputs = [ pygls pyparsing ];
 
   meta = with stdenv.lib; {
-    homepage = "https://github.com/regen100/cmake-language-server";
     description = "CMake LSP Implementation";
+    homepage = "https://github.com/regen100/cmake-language-server";
     license = licenses.mit;
     maintainers = with maintainers; [ metadark ];
   };
