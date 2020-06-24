@@ -5,13 +5,13 @@
 
 stdenv.mkDerivation rec {
   pname = "VVVVVV-unwrapped";
-  version = "68bb84f90b70f70905e054c9f5c033e0049617e4";
+  version = "9804fbc";
 
   src = fetchFromGitHub {
     owner = "TerryCavanagh";
     repo = "VVVVVV";
     rev = version;
-    sha256 = "16qzbgczx9lakbl6fadg4wqgn74mgjwbqaz87p4w8abk2n3vagr5";
+    sha256 = "0p74kv245bynmmlb7mn5nk5452f7r3ivh60b9hpgpzi7vr03zn9d";
   };
 
   sourceRoot = "source/desktop_version";
@@ -23,6 +23,7 @@ stdenv.mkDerivation rec {
     Foundation
   ];
 
+  patchFlags = [ "-p2" ];
   patches = [
     ./find-sdl-mixer.patch
   ];
