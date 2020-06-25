@@ -51,4 +51,18 @@ rec {
   VVVVVV = pkgs.callPackage ./pkgs/games/VVVVVV/wrapper.nix {
     inherit (pkgs.darwin.apple_sdk.frameworks) Foundation;
   };
+
+  zynaddsubfx = zynaddsubfx-ntk;
+
+  zynaddsubfx-fltk = pkgs.callPackage ./pkgs/applications/audio/zynaddsubfx {
+    guiModule = "fltk";
+  };
+
+  zynaddsubfx-ntk = pkgs.callPackage ./pkgs/applications/audio/zynaddsubfx {
+    guiModule = "ntk";
+  };
+
+  zyn-fusion = pkgs.callPackage ./pkgs/applications/audio/zynaddsubfx {
+    guiModule = "zest";
+  };
 }
