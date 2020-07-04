@@ -14,6 +14,10 @@ rec {
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
+  caprine = pkgs.callPackage ./pkgs/applications/networking/instant-messengers/caprine {
+    electron = pkgs.electron_9;
+  };
+
   clonehero-unwrapped = pkgs.callPackage ./pkgs/games/clonehero {};
 
   clonehero-xdg-wrapper = pkgs.callPackage ./pkgs/games/clonehero/xdg-wrapper.nix {
