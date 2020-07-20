@@ -48,6 +48,14 @@ rec {
 
   newsflash = pkgs.callPackage ./pkgs/applications/networking/newsreaders/newsflash {};
 
+  protontricks = pkgs.python3Packages.callPackage ./pkgs/tools/package-management/protontricks {
+    inherit (pkgs.gnome3) zenity;
+    wine = pkgs.wineWowPackages.minimal;
+    winetricks = pkgs.winetricks.override {
+      wine = pkgs.wineWowPackages.minimal;
+    };
+  };
+
   pygls = pkgs.python3Packages.callPackage ./pkgs/development/python-modules/pygls {};
 
   runescape-launcher-unwrapped = pkgs.callPackage ./pkgs/games/runescape-launcher {};
