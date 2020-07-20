@@ -46,6 +46,8 @@ rec {
     inherit lightdm-webkit2-greeter;
   };
 
+  newsflash = pkgs.callPackage ./pkgs/applications/networking/newsreaders/newsflash {};
+
   pygls = pkgs.python3Packages.callPackage ./pkgs/development/python-modules/pygls {};
 
   runescape-launcher-unwrapped = pkgs.callPackage ./pkgs/games/runescape-launcher {};
