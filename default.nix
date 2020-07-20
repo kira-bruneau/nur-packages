@@ -33,7 +33,7 @@ rec {
   clonehero = clonehero-fhs-wrapper;
 
   cmake-language-server = pkgs.python3Packages.callPackage ./pkgs/development/tools/misc/cmake-language-server {
-    inherit pygls;
+    inherit pygls pytest-datadir;
   };
 
   debugpy = pkgs.python3Packages.callPackage ./pkgs/development/python-modules/debugpy {};
@@ -57,6 +57,8 @@ rec {
   };
 
   pygls = pkgs.python3Packages.callPackage ./pkgs/development/python-modules/pygls {};
+
+  pytest-datadir = pkgs.python3Packages.callPackage ./pkgs/development/python-modules/pytest-datadir {};
 
   runescape-launcher-unwrapped = pkgs.callPackage ./pkgs/games/runescape-launcher {};
 
