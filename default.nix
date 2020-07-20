@@ -58,6 +58,8 @@ rec {
     inherit (pkgs.darwin.apple_sdk.frameworks) Security;
   };
 
+  vdf = pkgs.python3Packages.callPackage ./pkgs/development/python-modules/vdf {};
+
   vkBasalt = pkgs.callPackage ./pkgs/tools/graphics/vkBasalt {
     vkBasalt32 = pkgs.pkgsi686Linux.callPackage ./pkgs/tools/graphics/vkBasalt {};
   };
