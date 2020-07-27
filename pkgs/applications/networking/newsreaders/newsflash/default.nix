@@ -13,7 +13,6 @@
 , sqlite
 , webkitgtk
 , glib-networking
-, gsettings-desktop-schemas
 , gstreamer
 , gst-plugins-base
 , gst-plugins-good
@@ -61,8 +60,6 @@ rustPlatform.buildRustPackage rec {
   ];
 
   buildInputs = [
-    gdk-pixbuf
-    glib
     gtk3
     libhandy
     openssl
@@ -71,9 +68,6 @@ rustPlatform.buildRustPackage rec {
 
     # TLS support for loading external content in webkitgtk WebView
     glib-networking
-
-    # Used to get system default font (src/article_view/mod.rs:824)
-    gsettings-desktop-schemas
 
     # Video & audio support for webkitgtk WebView
     gstreamer
