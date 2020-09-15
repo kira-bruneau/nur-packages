@@ -60,6 +60,6 @@ stdenv.mkDerivation rec {
     homepage = "https://pokemmo.eu";
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ metadark ];
-    platforms = platforms.all;
+    platforms = platforms.linux;
   };
 }
