@@ -1,4 +1,4 @@
-{ stdenv
+{ lib
 , buildPythonPackage
 , fetchFromGitHub
 , setuptools_scm
@@ -26,7 +26,7 @@ buildPythonPackage rec {
 
   checkInputs = [ pytestCheckHook ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "pytest plugin for manipulating test data directories and files";
     homepage = "https://github.com/gabrielcnr/pytest-datadir";
     license = licenses.mit;

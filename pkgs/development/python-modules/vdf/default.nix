@@ -1,4 +1,4 @@
-{ stdenv
+{ lib
 , buildPythonPackage
 , fetchFromGitHub
 , mock
@@ -18,7 +18,7 @@ buildPythonPackage rec {
 
   checkInputs = [ mock pytestCheckHook ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Library for working with Valve's VDF text format";
     homepage = "https://github.com/ValvePython/vdf";
     license = licenses.mit;

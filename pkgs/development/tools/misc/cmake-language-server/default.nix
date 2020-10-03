@@ -1,4 +1,4 @@
-{ stdenv
+{ lib
 , buildPythonApplication
 , fetchFromGitHub
 , poetry
@@ -32,7 +32,7 @@ buildPythonApplication rec {
   checkInputs = [ cmake pytest-datadir pytestCheckHook ];
   dontUseCmakeConfigure = true;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "CMake LSP Implementation";
     homepage = "https://github.com/regen100/cmake-language-server";
     license = licenses.mit;

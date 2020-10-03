@@ -1,4 +1,5 @@
-{ stdenv
+{ lib
+, stdenv
 , buildPythonPackage
 , fetchFromGitHub
 , substituteAll
@@ -66,7 +67,7 @@ buildPythonPackage rec {
     pytest_xdist
     pytestCheckHook
     requests
-  ] ++ stdenv.lib.optionals (!isPy27) [
+  ] ++ lib.optionals (!isPy27) [
     django
     gevent
   ];
@@ -74,7 +75,7 @@ buildPythonPackage rec {
   # Override default arguments in pytest.ini
   pytestFlagsArray = [ "--timeout=0" "-n=$NIX_BUILD_CORES" ];
 
-  disabledTests = stdenv.lib.optionals isPy27 [
+  disabledTests = lib.optionals isPy27 [
     # django 1.11 is the last version to support Python 2.7
     # and is no longer built in nixpkgs
     "django"
@@ -83,7 +84,7 @@ buildPythonPackage rec {
     "gevent"
   ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "An implementation of the Debug Adapter Protocol for Python";
     homepage = "https://github.com/microsoft/debugpy";
     license = licenses.mit;

@@ -1,7 +1,7 @@
-{ stdenv
-, lib
+{ lib
 , buildPythonApplication
 , fetchFromGitHub
+, bash
 , setuptools_scm
 , vdf
 , wine
@@ -24,7 +24,7 @@ buildPythonApplication rec {
   # Fix interpreter in mock run.sh for tests
   postPatch = ''
     substituteInPlace tests/conftest.py \
-      --replace '#!/bin/bash' '#!${stdenv.shell}' \
+      --replace '#!/bin/bash' '#!${bash}/bin/bash' \
   '';
 
   preBuild = ''
@@ -48,7 +48,7 @@ buildPythonApplication rec {
 
   checkInputs = [ pytestCheckHook ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "A simple wrapper for running Winetricks commands for Proton-enabled games";
     homepage = "https://github.com/Matoking/protontricks";
     license = licenses.gpl3;

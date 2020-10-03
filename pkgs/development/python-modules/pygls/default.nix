@@ -1,4 +1,4 @@
-{ stdenv
+{ lib
 , buildPythonPackage
 , isPy3k
 , fetchFromGitHub
@@ -21,7 +21,7 @@ buildPythonPackage rec {
 
   checkInputs = [ mock pytest-asyncio pytestCheckHook ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Pythonic generic implementation of the Language Server Protocol";
     homepage = "https://github.com/openlawlibrary/pygls";
     license = licenses.asl20;
