@@ -5,8 +5,8 @@
 , pygls
 , pyparsing
 , cmake
-, pytest
 , pytest-datadir
+, pytestCheckHook
 }:
 
 buildPythonApplication rec {
@@ -29,9 +29,8 @@ buildPythonApplication rec {
   nativeBuildInputs = [ poetry ];
   propagatedBuildInputs = [ pygls pyparsing ];
 
-  checkInputs = [ cmake pytest pytest-datadir ];
+  checkInputs = [ cmake pytest-datadir pytestCheckHook ];
   dontUseCmakeConfigure = true;
-  checkPhase = "pytest";
 
   meta = with stdenv.lib; {
     description = "CMake LSP Implementation";

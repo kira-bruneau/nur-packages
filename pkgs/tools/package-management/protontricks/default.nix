@@ -7,7 +7,7 @@
 , wine
 , winetricks
 , zenity
-, pytest
+, pytestCheckHook
 }:
 
 buildPythonApplication rec {
@@ -46,8 +46,7 @@ buildPythonApplication rec {
     "--prefix PATH : ${lib.makeBinPath [ winetricks zenity ]}"
   ];
 
-  checkInputs = [ pytest ];
-  checkPhase = "pytest";
+  checkInputs = [ pytestCheckHook ];
 
   meta = with stdenv.lib; {
     description = "A simple wrapper for running Winetricks commands for Proton-enabled games";

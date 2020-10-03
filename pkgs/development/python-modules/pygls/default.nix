@@ -3,8 +3,8 @@
 , isPy3k
 , fetchFromGitHub
 , mock
-, pytest
 , pytest-asyncio
+, pytestCheckHook
 }:
 
 buildPythonPackage rec {
@@ -19,13 +19,7 @@ buildPythonPackage rec {
     sha256 = "1v7x5598d6jg8ya0spqjma56y062rznwimsrp8nq6fkskqgfm0ds";
   };
 
-  postPatch = ''
-    substituteInPlace setup.py \
-      --replace "pytest==4.5.0" "pytest"
-  '';
-
-  checkInputs = [ mock pytest pytest-asyncio ];
-  checkPhase = "pytest";
+  checkInputs = [ mock pytest-asyncio pytestCheckHook ];
 
   meta = with stdenv.lib; {
     description = "Pythonic generic implementation of the Language Server Protocol";

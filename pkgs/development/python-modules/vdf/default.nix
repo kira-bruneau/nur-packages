@@ -1,9 +1,8 @@
 { stdenv
 , buildPythonPackage
 , fetchFromGitHub
-, pytest
-, pytestcov
 , mock
+, pytestCheckHook
 }:
 
 buildPythonPackage rec {
@@ -17,8 +16,7 @@ buildPythonPackage rec {
     sha256 = "0d9bhxdznry7kzyma00cxwjn6rqnd6vw8v5ym68k6qswgfzb569i";
   };
 
-  checkInputs = [ pytest pytestcov mock ];
-  checkPhase = "make test";
+  checkInputs = [ mock pytestCheckHook ];
 
   meta = with stdenv.lib; {
     description = "Library for working with Valve's VDF text format";
