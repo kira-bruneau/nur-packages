@@ -18,6 +18,8 @@ with mergedPythonPackages; {
 
   debugpy = callPackage ./debugpy { };
 
+  lunr = callPackage ./lunr { };
+
   oead = callPackage ./oead {
     inherit (mergedPkgs) cmake;
   };
