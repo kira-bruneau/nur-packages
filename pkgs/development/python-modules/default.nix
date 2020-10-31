@@ -14,6 +14,8 @@ with mergedPythonPackages; {
 
   botw-utils = callPackage ./botw-utils { };
 
+  byml = callPackage ./byml { };
+
   debugpy = callPackage ./debugpy { };
 
   oead = callPackage ./oead {
