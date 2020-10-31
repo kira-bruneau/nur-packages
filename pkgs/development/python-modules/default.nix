@@ -12,6 +12,10 @@ with mergedPythonPackages; {
 
   debugpy = callPackage ./debugpy { };
 
+  oead = callPackage ./oead {
+    inherit (mergedPkgs) cmake;
+  };
+
   pygls = callPackage ./pygls { };
 
   pytest-datadir = callPackage ./pytest-datadir { };
