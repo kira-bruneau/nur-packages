@@ -37,6 +37,7 @@ Name | Attribute | Description
 
 Name | Attribute | Description
 -----|-----------|------------
+[aamp](https://github.com/zeldamods/aamp)|[nur.repos.metadark.pythonPackages.aamp](https://github.com/nix-community/nur-combined/blob/master/repos/metadark/pkgs/development/python-modules/aamp/default.nix)|Nintendo parameter archive (AAMP) library and converters
 [debugpy](https://github.com/microsoft/debugpy)|[nur.repos.metadark.pythonPackages.debugpy](https://github.com/nix-community/nur-combined/blob/master/repos/metadark/pkgs/development/python-modules/debugpy/default.nix)|An implementation of the Debug Adapter Protocol for Python
 [pygls](https://github.com/openlawlibrary/pygls)|[nur.repos.metadark.pythonPackages.pygls](https://github.com/nix-community/nur-combined/blob/master/repos/metadark/pkgs/development/python-modules/pygls/default.nix)|Pythonic generic implementation of the Language Server Protocol
 [pytest-datadir](https://github.com/gabrielcnr/pytest-datadir)|[nur.repos.metadark.pythonPackages.pytest-datadir](https://github.com/nix-community/nur-combined/blob/master/repos/metadark/pkgs/development/python-modules/pytest-datadir/default.nix)|pytest plugin for manipulating test data directories and files

@@ -8,6 +8,8 @@ in
 with mergedPythonPackages; {
   inherit callPackage;
 
+  aamp = callPackage ./aamp { };
+
   debugpy = callPackage ./debugpy { };
 
   pygls = callPackage ./pygls { };
