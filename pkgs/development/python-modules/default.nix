@@ -26,5 +26,7 @@ with mergedPythonPackages; {
 
   pytest-datadir = callPackage ./pytest-datadir { };
 
+  rstb = callPackage ./rstb { };
+
   vdf = callPackage ./vdf { };
 })
