@@ -8,6 +8,7 @@
 
 Name | Attribute | Description
 -----|-----------|------------
+[bcml](https://github.com/NiceneNerd/BCML)|[nur.repos.metadark.bcml](https://github.com/nix-community/nur-combined/blob/master/repos/metadark/pkgs/games/bcml/default.nix)|A mod merging and managing tool for The Legend of Zelda: Breath of the Wild
 [caprine](https://sindresorhus.com/caprine)|[nur.repos.metadark.caprine](https://github.com/nix-community/nur-combined/tree/master/repos/metadark/pkgs/applications/networking/instant-messengers/caprine/default.nix)|Elegant Facebook Messenger desktop app
 [clonehero](https://clonehero.net)|[nur.repos.metadark.clonehero](https://github.com/nix-community/nur-combined/tree/master/repos/metadark/pkgs/games/clonehero/default.nix)|Clone of Guitar Hero and Rockband-style games
 [cmake-language-server](https://github.com/regen100/cmake-language-server)|[nur.repos.metadark.cmake-language-server](https://github.com/nix-community/nur-combined/blob/master/repos/metadark/pkgs/development/tools/misc/cmake-language-server/default.nix)|CMake LSP Implementation
