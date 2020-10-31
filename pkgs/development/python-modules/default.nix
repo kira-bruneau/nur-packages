@@ -12,6 +12,8 @@ with mergedPythonPackages; {
 
   botw-havok = callPackage ./botw-havok { };
 
+  botw-utils = callPackage ./botw-utils { };
+
   debugpy = callPackage ./debugpy { };
 
   oead = callPackage ./oead {
