@@ -28,6 +28,8 @@ with mergedPythonPackages; {
 
   pygls = callPackage ./pygls { };
 
+  pymdown-extensions = callPackage ./pymdown-extensions { };
+
   pytest-datadir = callPackage ./pytest-datadir { };
 
   rstb = callPackage ./rstb { };
