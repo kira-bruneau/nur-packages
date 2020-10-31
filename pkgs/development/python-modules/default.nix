@@ -20,6 +20,8 @@ with mergedPythonPackages; {
 
   lunr = callPackage ./lunr { };
 
+  mkdocs = callPackage ./mkdocs { };
+
   oead = callPackage ./oead {
     inherit (mergedPkgs) cmake;
   };
