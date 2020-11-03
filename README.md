@@ -23,7 +23,6 @@ Name | Attribute | Description
 [texlab](https://texlab.netlify.app)|[nur.repos.metadark.texlab](https://github.com/nix-community/nur-combined/blob/master/repos/metadark/pkgs/development/tools/misc/texlab/default.nix)|An implementation of the Language Server Protocol for LaTeX
 [vkBasalt](https://github.com/DadSchoorse/vkBasalt)|[nur.repos.metadark.vkBasalt](https://github.com/nix-community/nur-combined/blob/master/repos/metadark/pkgs/tools/graphics/vkBasalt/default.nix)|A Vulkan post processing layer for Linux
 [VVVVVV](https://thelettervsixtim.es)|[nur.repos.metadark.VVVVVV](https://github.com/nix-community/nur-combined/blob/master/repos/metadark/pkgs/games/VVVVVV/default.nix)|A retro-styled 2D platformer
-[wine-eac](https://github.com/Guy1524/wine)|[nur.repos.metadark.wine-eac](https://github.com/nix-community/nur-combined/blob/master/repos/metadark/pkgs/misc/emulators/wine-eac/default.nix)|A custom fork of Wine to support games with Easy Anti-Cheat
 [zynaddsubfx](https://zynaddsubfx.sourceforge.io)|[nur.repos.metadark.zynaddsubfx](https://github.com/nix-community/nur-combined/blob/master/repos/metadark/pkgs/applications/audio/zynaddsubfx/default.nix)|High quality software synthesizer
 
 # NixOS Modules
