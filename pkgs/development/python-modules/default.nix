@@ -10,6 +10,8 @@ with mergedPythonPackages; {
 
   aamp = callPackage ./aamp { };
 
+  botw-havok = callPackage ./botw-havok { };
+
   debugpy = callPackage ./debugpy { };
 
   oead = callPackage ./oead {
