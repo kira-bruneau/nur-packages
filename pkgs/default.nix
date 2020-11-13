@@ -38,8 +38,6 @@ with mergedPkgs; {
 
   goverlay = callPackage ./tools/graphics/goverlay { };
 
-  libhandy1 = callPackage ./development/libraries/libhandy1 { };
-
   lightdm-webkit2-greeter = callPackage ./applications/display-managers/lightdm-webkit2-greeter { };
 
   newsflash = callPackage ./applications/networking/newsreaders/newsflash {
