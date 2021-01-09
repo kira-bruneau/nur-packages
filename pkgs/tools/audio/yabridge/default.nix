@@ -109,5 +109,6 @@ in stdenv.mkDerivation rec {
     homepage = "https://github.com/robbert-vdh/yabridge";
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ metadark ];
+    platforms = [ "x86_64-linux" ];
   };
 }
