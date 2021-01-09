@@ -120,6 +120,8 @@ with mergedPkgs; {
     wine = wineWowPackages.minimal;
   };
 
+  yabridgectl = callPackage ./tools/audio/yabridgectl { };
+
   zynaddsubfx = zyn-fusion;
 
   zynaddsubfx-fltk = callPackage ./applications/audio/zynaddsubfx {
