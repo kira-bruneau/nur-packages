@@ -116,6 +116,10 @@ with mergedPkgs; {
     kernel = linux;
   };
 
+  yabridge = callPackage ./tools/audio/yabridge {
+    wine = wineWowPackages.minimal;
+  };
+
   zynaddsubfx = zyn-fusion;
 
   zynaddsubfx-fltk = callPackage ./applications/audio/zynaddsubfx {
