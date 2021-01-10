@@ -38,6 +38,10 @@ in buildPythonPackage rec {
     sha256 = "1410rnyjs0z48rd4k6bwjmr51y7kfcylpka5k5faqf2in74wb0lx";
   };
 
+  patches = [
+    ./loosen-requirements.patch
+  ];
+
   propagatedBuildInputs = [
     nltk
   ];
