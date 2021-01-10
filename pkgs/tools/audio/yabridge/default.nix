@@ -97,11 +97,12 @@ in stdenv.mkDerivation rec {
   ];
 
   installPhase = ''
-    install -dm755 "$out/bin"
-    install yabridge-{host,group}.exe{,.so} "$out/bin"
-
-    install -dm755 "$out/lib"
-    install libyabridge.so "$out/lib"
+    mkdir -p "$out/bin" "$out/lib"
+    cp yabridge-group.exe "$out/bin"
+    cp yabridge-group.exe.so "$out/bin"
+    cp yabridge-host.exe "$out/bin"
+    cp yabridge-host.exe.so "$out/bin"
+    cp libyabridge.so "$out/lib"
   '';
 
   meta = with lib; {
