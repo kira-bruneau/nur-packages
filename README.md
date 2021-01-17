@@ -31,7 +31,7 @@ Name | Attribute | Description
 
 Name | Attribute | Description
 -----|-----------|------------
-[bluetooth-autoconnect](https://github.com/jrouleau/bluetooth-autoconnect)|[nur.repos.metadark.modules.bluetooth-autoconnect](https://github.com/nix-community/nur-combined/blob/master/repos/metadark/modules/services/networking/bluetooh-autoconnect.nix)|A linux command line tool to automatically connect to all paired and trusted bluetooth devices
+[bluetooth-autoconnect](https://github.com/jrouleau/bluetooth-autoconnect)|[nur.repos.metadark.modules.bluetooth-autoconnect](https://github.com/nix-community/nur-combined/blob/master/repos/metadark/modules/services/networking/bluetooth-autoconnect.nix)|A linux command line tool to automatically connect to all paired and trusted bluetooth devices
 [lightdm-webkit2-greeter](https://github.com/Antergos/web-greeter)|[nur.repos.metadark.modules.lightdm-webkit2-greeter](https://github.com/nix-community/nur-combined/tree/master/repos/metadark/modules/services/x11/display-managers/lightdm-greeters/webkit2.nix)|A modern, visually appealing greeter for LightDM
 [xpadneo](https://atar-axis.github.io/xpadneo)|[nur.repos.metadark.modules.xpadneo](https://github.com/nix-community/nur-combined/blob/master/repos/metadark/modules/hardware/xpadneo.nix)|Advanced Linux driver for Xbox One wireless controllers
 
