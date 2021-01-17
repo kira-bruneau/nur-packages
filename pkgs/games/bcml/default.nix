@@ -30,31 +30,20 @@
 , p7zip
 
   # GTK dependencies
-, gobject-introspection ? null
-, webkitgtk ? null
-, wrapGAppsHook ? null
-, glib-networking ? null
-, gst_all_1 ? null
-, pygobject3 ? null
+, gobject-introspection
+, webkitgtk
+, wrapGAppsHook
+, glib-networking
+, gst_all_1
+, pygobject3
 
   # Qt dependencies
-, wrapQtAppsHook ? null
-, pyqt5 ? null
-, pyqtwebengine ? null
+, wrapQtAppsHook
+, pyqt5
+, pyqtwebengine
 }:
 
 assert builtins.any (g: gui == g) [ "gtk" "qt" ];
-
-assert gui == "gtk" -> gobject-introspection != null;
-assert gui == "gtk" -> webkitgtk != null;
-assert gui == "gtk" -> wrapGAppsHook != null;
-assert gui == "gtk" -> glib-networking != null;
-assert gui == "gtk" -> gst_all_1 != null;
-assert gui == "gtk" -> pygobject3 != null;
-
-assert gui == "qt" -> wrapQtAppsHook != null;
-assert gui == "qt" -> pyqt5 != null;
-assert gui == "qt" -> pyqtwebengine != null;
 
 let
   guiName = {
