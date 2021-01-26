@@ -20,9 +20,7 @@ with mergedPkgs; {
 
   bluetooth-autoconnect = python3Packages.callPackage ./tools/bluetooth/bluetooth-autoconnect { };
 
-  caprine = callPackage ./applications/networking/instant-messengers/caprine {
-    electron = electron_9;
-  };
+  caprine = callPackage ./applications/networking/instant-messengers/caprine { };
 
   ccache = callPackage ./tools/misc/ccache {
     asciidoc = asciidoc-full;
