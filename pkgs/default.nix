@@ -11,6 +11,7 @@ with mergedPkgs; {
 
   bcml-gtk = python3Packages.callPackage ./games/bcml {
     gui = "gtk";
+    wrapQtAppsHook = null;
   };
 
   bcml-qt = python3Packages.callPackage ./games/bcml {
