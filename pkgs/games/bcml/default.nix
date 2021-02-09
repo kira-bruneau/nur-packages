@@ -71,13 +71,13 @@ let
 in
 buildPythonApplication rec {
   pname = "bcml";
-  version = "3.3.3";
+  version = "3.3.4";
 
   src = fetchFromGitHub {
     owner = "NiceneNerd";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256:0wa96bvigsidblr1hh8hg3sylykwjsr41rqqaigvn7kcvkkh04h5";
+    hash = "sha256:0bid87y264gl4pwpli4fd01gh2sv807x4m7bb017hf35ry7wm6a7";
   };
 
   patches = [
