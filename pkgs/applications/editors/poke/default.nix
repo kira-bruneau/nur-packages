@@ -1,15 +1,12 @@
 { lib
 , stdenv
-, fetchgit
+, fetchurl
 
 # Required build tools
-, autoconf
-, automake
 , bison
 , flex
 , gettext
 , help2man
-, libtool
 , makeWrapper
 , pkg-config
 , texinfo
@@ -19,7 +16,7 @@
 , readline
 
 # Optional runtime libraries
-# TODO: Enable guiSupport by default once it's been fully implemented
+# TODO: Enable guiSupport by default once it's more than just a stub
 # TODO: Add nbdSupport, requires packaging libndb
 , guiSupport ? false, tcl, tcllib, tk
 , miSupport ? true, json_c
@@ -31,19 +28,12 @@
 
 stdenv.mkDerivation rec {
   pname = "poke";
-  version = "unstable-2021-02-14";
-  jitter-version = "0.9.251";
+  version = "1.0";
 
-  src = fetchgit {
-    url = "git://git.savannah.gnu.org/poke.git";
-    rev = "d446afcb23fc2b8800de77caf07304fd3e0f0c49";
-    fetchSubmodules = true;
-    sha256 = "sha256-CeFibrzckzN4Ir5rLwkGukdXCS0LKV8qAq2QzDnQ1Y4=";
+  src = fetchurl {
+    url = "mirror://gnu/${pname}/${pname}-${version}.tar.gz";
+    hash = "sha256-3pMLhwDAdys8LNDQyjX1D9PXe9+CxiUetRa0noyiWwo=";
   };
-
-  patches = [
-    ./fix-tcl-tk-includes.patch
-  ];
 
   postPatch = ''
     patchShebangs .
@@ -52,13 +42,10 @@ stdenv.mkDerivation rec {
   strictDeps = true;
 
   nativeBuildInputs = [
-    autoconf
-    automake
     bison
     flex
     gettext
     help2man
-    libtool
     makeWrapper
     pkg-config
     texinfo
@@ -69,22 +56,10 @@ stdenv.mkDerivation rec {
   ++ lib.optional miSupport json_c
   ++ lib.optional textStylingSupport gettext;
 
-  preConfigure = ''
-    ./bootstrap \
-      --skip-po \
-      --no-git \
-      --gnulib-srcdir=gnulib \
-      --jitter-srcdir=jitter
-  '';
-
   configureFlags = lib.optionals guiSupport [
     "--with-tcl=${tcl}/lib"
     "--with-tk=${tk}/lib"
     "--with-tkinclude=${tk.dev}/include"
-  ];
-
-  buildFlags = [
-    "JITTER_VERSION=${jitter-version}"
   ];
 
   enableParallelBuilding = true;
