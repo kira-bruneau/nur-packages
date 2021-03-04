@@ -1,32 +1,23 @@
 { lib
 , stdenv
 , fetchurl
-
-# Required build tools
-, bison
-, flex
 , gettext
 , help2man
-, makeWrapper
 , pkg-config
 , texinfo
-
-# Required runtime libraries
+, makeWrapper
 , boehmgc
 , readline
-
-# Optional runtime libraries
-# TODO: Enable guiSupport by default once it's more than just a stub
-# TODO: Add nbdSupport, requires packaging libndb
 , guiSupport ? false, tcl, tcllib, tk
 , miSupport ? true, json_c
+, nbdSupport ? true, libnbd
 , textStylingSupport ? true
-
-# Test libraries
 , dejagnu
 }:
 
-stdenv.mkDerivation rec {
+let
+  isCross = stdenv.hostPlatform != stdenv.buildPlatform;
+in stdenv.mkDerivation rec {
   pname = "poke";
   version = "1.0";
 
@@ -42,19 +33,18 @@ stdenv.mkDerivation rec {
   strictDeps = true;
 
   nativeBuildInputs = [
-    bison
-    flex
     gettext
     help2man
-    makeWrapper
     pkg-config
     texinfo
-  ];
+  ] ++ lib.optional guiSupport makeWrapper;
 
-  buildInputs = [ boehmgc dejagnu readline ]
+  buildInputs = [ boehmgc readline ]
   ++ lib.optional guiSupport tk
   ++ lib.optional miSupport json_c
-  ++ lib.optional textStylingSupport gettext;
+  ++ lib.optional nbdSupport libnbd
+  ++ lib.optional textStylingSupport gettext
+  ++ lib.optional (!isCross) dejagnu;
 
   configureFlags = lib.optionals guiSupport [
     "--with-tcl=${tcl}/lib"
@@ -64,8 +54,8 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  doCheck = true;
-  checkInputs = [ dejagnu ];
+  doCheck = !isCross;
+  checkInputs = lib.optionals (!isCross) [ dejagnu ];
 
   postFixup = lib.optionalString guiSupport ''
     wrapProgram "$out/bin/poke-gui" \
@@ -76,7 +66,9 @@ stdenv.mkDerivation rec {
     description = "Interactive, extensible editor for binary data";
     homepage = "http://www.jemarch.net/poke";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [ metadark ];
+    maintainers = with maintainers; [ AndersonTorres metadark ];
     platforms = platforms.unix;
   };
 }
+
+# TODO: Enable guiSupport by default once it's more than just a stub
