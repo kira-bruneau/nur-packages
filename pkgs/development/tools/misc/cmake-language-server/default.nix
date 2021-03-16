@@ -11,20 +11,14 @@
 
 buildPythonApplication rec {
   pname = "cmake-language-server";
-  version = "0.1.2";
   format = "pyproject";
 
   src = fetchFromGitHub {
     owner = "regen100";
     repo = pname;
-    rev = "v${version}";
-    hash = "sha256-Z6DJHPtVBD6BUhnPiul5Y1p+sjdyJjg+lPCCObtc528=";
+    rev = "a5af5b505f8810760168dc250caf8404370b15c3";
+    hash = "sha256-uRn4Sl81ZdMZprYlDQcjNN/rl8SAm6Po7yZd3CtP4kA=";
   };
-
-  postPatch = ''
-    substituteInPlace pyproject.toml \
-      --replace 'pygls = "^0.8.1"' 'pygls = "^0.9.0"'
-  '';
 
   nativeBuildInputs = [ poetry ];
   propagatedBuildInputs = [ pygls pyparsing ];
