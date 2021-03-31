@@ -2,7 +2,6 @@
 , buildPythonPackage
 , isPy3k
 , fetchFromGitHub
-, psutil
 , pydantic
 , typeguard
 , mock
@@ -12,18 +11,17 @@
 
 buildPythonPackage rec {
   pname = "pygls";
-  version = "0.10.0";
+  version = "0.10.2";
   disabled = !isPy3k;
 
   src = fetchFromGitHub {
     owner = "openlawlibrary";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-n+fO5b4CCau2yHwxGbsGQ4eCcmeI5pScME7HKfSFY/s=";
+    hash = "sha256-HMKGFgSQyhFc7IgOWl6BrTnCqwy6duEw5NqUN3vOHEE=";
   };
 
   propagatedBuildInputs = [
-    psutil
     pydantic
     typeguard
   ];
