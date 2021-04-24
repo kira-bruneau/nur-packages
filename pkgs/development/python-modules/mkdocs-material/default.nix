@@ -31,6 +31,7 @@ buildPythonPackage rec {
 
   # No tests
   doCheck = false;
+  pythonImportsCheck = [ "material" ];
 
   # Strip adds unnecessary overhead with no binary files to strip
   dontStrip = true;
