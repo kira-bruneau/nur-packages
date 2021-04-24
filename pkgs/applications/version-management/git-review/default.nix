@@ -3,6 +3,7 @@
 , buildPythonApplication
 , pbr
 , requests
+, setuptools
 }:
 
 buildPythonApplication rec {
@@ -18,9 +19,15 @@ buildPythonApplication rec {
     hash = "sha256-0koFKlYDd+KAylZyA5iJcMRZcWps6EhCUHrXLl5pfjY=";
   };
 
-  propagatedBuildInputs = [ pbr requests ];
+  propagatedBuildInputs = [
+    pbr
+    requests
+    setuptools # implicit dependency, used to get package version through pkg_resources
+  ];
 
-  # Don't do tests because they require gerrit which is not packaged
+  # Don't run tests because they pull in external dependencies
+  # (a specific build of gerrit + maven plugins), and I haven't figured
+  # out how to work around this yet.
   doCheck = false;
 
   meta = with lib; {
