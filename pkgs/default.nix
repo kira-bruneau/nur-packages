@@ -92,8 +92,8 @@ with mergedPkgs; {
 
   rofi-wayland = callPackage ./applications/misc/rofi-wayland { };
 
-  runescape-launcher-unwrapped = callPackage ./games/runescape-launcher { };
   runescape-launcher = callPackage ./games/runescape-launcher/wrapper.nix { };
+  runescape-launcher-unwrapped = callPackage ./games/runescape-launcher { };
 
   texlab = callPackage ./development/tools/misc/texlab {
     inherit (darwin.apple_sdk.frameworks) Security;
@@ -113,11 +113,11 @@ with mergedPkgs; {
     };
   };
 
-  VVVVVV-unwrapped = callPackage ./games/VVVVVV {
+  VVVVVV = callPackage ./games/VVVVVV/wrapper.nix {
     inherit (darwin.apple_sdk.frameworks) Foundation;
   };
 
-  VVVVVV = callPackage ./games/VVVVVV/wrapper.nix {
+  VVVVVV-unwrapped = callPackage ./games/VVVVVV {
     inherit (darwin.apple_sdk.frameworks) Foundation;
   };
 
