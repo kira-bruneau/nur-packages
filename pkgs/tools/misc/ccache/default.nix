@@ -14,14 +14,16 @@
 
 let ccache = stdenv.mkDerivation rec {
   pname = "ccache";
-  version = "4.2.1";
+  version = "4.3";
 
   src = fetchFromGitHub {
     owner = pname;
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-AmgJpW7AGCSggbHp1fLO5yhXS9LIm7O77nQdDERJYAA=";
+    hash = "sha256-ZBxDTMUZiZJLIYbvACTFwvlss+IZiMjiL0khfM5hFCM=";
   };
+
+  outputs = [ "out" "man" ];
 
   patches = [
     # When building for Darwin, test/run uses dwarfdump, whereas on
@@ -35,13 +37,9 @@ let ccache = stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ asciidoc cmake perl ];
-
   buildInputs = [ zstd ];
 
-  outputs = [ "out" "man" ];
-
   doCheck = true;
-
   checkInputs = [
     # test/run requires the compgen function which is available in
     # bashInteractive, but not bash.
