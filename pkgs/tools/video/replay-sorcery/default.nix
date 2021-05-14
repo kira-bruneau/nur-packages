@@ -23,7 +23,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-HPkSOwfwcg4jLUzKfqdXgLu7mgD5H4wb9d2BrqWQeHc=";
   };
 
-  # Patch in libnotify if support is enabled.
+  # Patch in libnotify if support is enabled. Can't use makeWrapper
+  # since it would break the security wrapper in the NixOS module.
   patches = lib.optional notifySupport (substituteAll {
     src = ./hardcode-libnotify.patch;
     inherit libnotify;
@@ -42,7 +43,8 @@ stdenv.mkDerivation rec {
     "-DRS_SYSTEMD_DIR=${placeholder "out"}/lib/systemd/user"
 
     # SETUID & SETGID permissions required for hardware accelerated
-    # video capture can't be set during the build.
+    # video capture can't be set during the build. Use the NixOS
+    # module if you want hardware accelerated video capture.
     "-DRS_SETID=OFF"
   ];
 
