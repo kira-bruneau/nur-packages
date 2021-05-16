@@ -87,7 +87,8 @@ stdenv.mkDerivation rec {
   '';
 
   # Add $lib/lib to gamemoded & gamemode-simulate-game's rpath since
-  # they use dlopen to load libgamemode.
+  # they use dlopen to load libgamemode. Can't use makeWrapper since
+  # it would break the security wrapper in the NixOS module.
   postFixup = ''
     for bin in "$out/bin/gamemoded" "$out/bin/gamemode-simulate-game"; do
       patchelf --set-rpath "$lib/lib:$(patchelf --print-rpath "$bin")" "$bin"
