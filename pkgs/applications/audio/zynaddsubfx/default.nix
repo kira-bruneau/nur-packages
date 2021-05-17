@@ -66,6 +66,8 @@ in stdenv.mkDerivation rec {
     sha256 = "sha256-eIj1S8aWpXREbKIoZyvxSCjM9RVc4OsIm/BFNsdoonE=";
   };
 
+  outputs = [ "out" "doc" ];
+
   postPatch = ''
     patchShebangs .
     substituteInPlace src/Misc/Config.cpp --replace /usr $out
