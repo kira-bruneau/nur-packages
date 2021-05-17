@@ -22,6 +22,11 @@ buildPythonApplication rec {
     hash = "sha256-uRn4Sl81ZdMZprYlDQcjNN/rl8SAm6Po7yZd3CtP4kA=";
   };
 
+  patches = [
+    # Test timeouts occasionally cause the build to fail
+    ./disable-test-timeouts.patch
+  ];
+
   nativeBuildInputs = [ poetry ];
   propagatedBuildInputs = [ pygls pyparsing ];
 
