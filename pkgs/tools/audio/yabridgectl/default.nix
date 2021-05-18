@@ -34,5 +34,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/robbert-vdh/yabridge/tree/master/tools/yabridgectl";
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ metadark ];
+    platforms = yabridge.meta.platforms;
   };
 }

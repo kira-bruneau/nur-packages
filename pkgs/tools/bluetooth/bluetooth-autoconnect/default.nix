@@ -38,5 +38,6 @@ buildPythonApplication rec {
     homepage = "https://github.com/jrouleau/bluetooth-autoconnect";
     license = licenses.mit;
     maintainers = with maintainers; [ metadark ];
+    platforms = platforms.linux;
   };
 }

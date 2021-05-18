@@ -50,5 +50,6 @@ nodePackages.${packageName}.override {
   meta = with lib; {
     homepage = "https://sindresorhus.com/caprine";
     maintainers = with maintainers; [ metadark ];
+    platforms = platforms.all;
   };
 }
