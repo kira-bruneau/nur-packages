@@ -10,8 +10,7 @@ in
   options.services.bluetooth-autoconnect = {
     enable = mkEnableOption ''
       bluetooth autoconnect to automatically connect to all paired and
-      trusted bluetooth devices.
-    '';
+      trusted bluetooth devices'';
   };
 
   config = mkIf cfg.enable {
