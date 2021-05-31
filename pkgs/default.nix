@@ -33,9 +33,6 @@ with mergedPkgs; {
 
   cmake-language-server = python3Packages.callPackage ./development/tools/misc/cmake-language-server { };
 
-  emacs-pgtk = callPackage ./applications/editors/emacs-pgtk { };
-  emacs-pgtk-native-comp = emacs-pgtk;
-
   gamemode = callPackage ./tools/games/gamemode rec {
     libgamemode32 = (pkgsi686Linux.callPackage ./tools/games/gamemode {
       inherit libgamemode32;
