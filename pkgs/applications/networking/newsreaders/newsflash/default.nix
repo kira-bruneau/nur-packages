@@ -15,6 +15,7 @@
 , webkitgtk
 , glib-networking
 , librsvg
+, xdg-utils
 , gst_all_1
 }:
 
@@ -83,6 +84,9 @@ stdenv.mkDerivation rec {
 
     # SVG support for gdk-pixbuf
     librsvg
+
+    # Open links in browser
+    xdg-utils
   ] ++ (with gst_all_1; [
     # Audio & video support for webkitgtk WebView
     gstreamer
