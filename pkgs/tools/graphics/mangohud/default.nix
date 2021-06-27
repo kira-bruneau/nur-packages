@@ -2,7 +2,6 @@
 , stdenv
 , fetchFromGitHub
 , fetchurl
-, fetchpatch
 , substituteAll
 , coreutils
 , curl
@@ -10,7 +9,7 @@
 , glxinfo
 , gnugrep
 , gnused
-, pciutils
+, lsof
 , xdg-utils
 , dbus
 , hwdata
@@ -27,6 +26,7 @@
 , vulkan-loader
 , libXNVCtrl
 , wayland
+, addOpenGLRunpath
 }:
 
 let
@@ -78,7 +78,7 @@ in stdenv.mkDerivation rec {
         glxinfo
         gnugrep
         gnused
-        pciutils
+        lsof
         xdg-utils
       ];
 
@@ -131,9 +131,11 @@ in stdenv.mkDerivation rec {
       "$out/share/vulkan/implicit_layer.d/MangoHud.x86.json"
   '';
 
-  # Support overlaying Vulkan applications without requiring mangohud to be installed
+  # Support Nvidia cards by adding OpenGL path and support overlaying
+  # Vulkan applications without requiring MangoHud to be installed
   postFixup = ''
     wrapProgram "$out/bin/mangohud" \
+      --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ addOpenGLRunpath.driverLink ]} \
       --prefix XDG_DATA_DIRS : "$out/share"
   '';
 
