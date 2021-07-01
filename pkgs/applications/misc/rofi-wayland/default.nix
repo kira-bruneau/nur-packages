@@ -1,6 +1,5 @@
 { lib
 , stdenv
-, rofi
 , fetchFromGitHub
 , meson
 , ninja
