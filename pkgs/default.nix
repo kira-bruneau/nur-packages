@@ -78,7 +78,9 @@ in
 
   replay-sorcery = callPackage ./tools/video/replay-sorcery { };
 
-  rofi-wayland = callPackage ./applications/misc/rofi-wayland { };
+  rofi-wayland = prev.rofi.override {
+    rofi-unwrapped = callPackage ./applications/misc/rofi-wayland { };
+  };
 
   runescape-launcher = callPackage ./games/runescape-launcher/wrapper.nix { };
   runescape-launcher-unwrapped = callPackage ./games/runescape-launcher { };
