@@ -2,10 +2,11 @@
 , multiStdenv
 , fetchFromGitHub
 , substituteAll
+, libnotify
+, wine
 , meson
 , ninja
 , pkg-config
-, wine
 , boost
 , libxcb
 , pkgsi686Linux
@@ -82,8 +83,8 @@ in multiStdenv.mkDerivation rec {
   patches = [
     # Hard code wine path so wine version is correct in logs
     (substituteAll {
-      src = ./hardcode-wine.patch;
-      inherit wine;
+      src = ./hardcode-dependencies.patch;
+      inherit libnotify wine;
     })
   ];
 
