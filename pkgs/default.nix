@@ -25,9 +25,7 @@ in
 
   caprine = callPackage ./applications/networking/instant-messengers/caprine { };
 
-  ccache = callPackage ./development/tools/ccache {
-    asciidoc = asciidoc-full;
-  };
+  ccache = callPackage ./development/tools/ccache { };
 
   clonehero = clonehero-fhs-wrapper;
   clonehero-fhs-wrapper = callPackage ./games/clonehero/fhs-wrapper.nix { };
