@@ -58,7 +58,7 @@ in
     inherit (pkgs) python3Packages;
   };
 
-  newsflash = callPackage ./applications/networking/newsreaders/newsflash { };
+  newsflash = callPackage ./applications/networking/feedreaders/newsflash { };
 
   poke = callPackage ./applications/editors/poke { };
 
