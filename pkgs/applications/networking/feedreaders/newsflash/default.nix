@@ -95,5 +95,6 @@ stdenv.mkDerivation rec {
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ kira-bruneau ];
     platforms = platforms.linux; # libhandy
+    mainProgram = "com.gitlab.newsflash";
   };
 }
