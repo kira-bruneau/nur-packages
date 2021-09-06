@@ -34,7 +34,7 @@ in
   clonehero-unwrapped = callPackage ./games/clonehero { };
   clonehero-xdg-wrapper = callPackage ./games/clonehero/xdg-wrapper.nix { };
 
-  cmake-language-server = python3Packages.callPackage ./development/tools/misc/cmake-language-server { };
+  cmake-language-server = python3Packages.callPackage ./development/tools/cmake-language-server { };
 
   gamemode = callPackage ./tools/games/gamemode rec {
     libgamemode32 = (pkgsi686Linux.callPackage ./tools/games/gamemode {
@@ -85,7 +85,7 @@ in
   runescape-launcher = callPackage ./games/runescape-launcher/wrapper.nix { };
   runescape-launcher-unwrapped = callPackage ./games/runescape-launcher { };
 
-  texlab = callPackage ./development/tools/misc/texlab {
+  texlab = callPackage ./development/tools/texlab {
     inherit (darwin.apple_sdk.frameworks) Security CoreServices;
   };
 
