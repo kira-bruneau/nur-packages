@@ -25,7 +25,7 @@ in
 
   caprine = callPackage ./applications/networking/instant-messengers/caprine { };
 
-  ccache = callPackage ./tools/misc/ccache {
+  ccache = callPackage ./development/tools/ccache {
     asciidoc = asciidoc-full;
   };
 
