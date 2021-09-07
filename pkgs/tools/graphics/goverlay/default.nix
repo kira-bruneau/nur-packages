@@ -6,13 +6,14 @@
 , fpc
 , lazarus-qt
 , wrapQtAppsHook
-, libX11
+, libGL
+, libGLU
 , libqt5pas
+, libX11
 , coreutils
 , git
 , gnugrep
 , libnotify
-, mesa-demos
 , polkit
 , procps
 , systemd
@@ -34,13 +35,13 @@ let
   '';
 in stdenv.mkDerivation rec {
   pname = "goverlay";
-  version = "0.6";
+  version = "0.6.2";
 
   src = fetchFromGitHub {
     owner = "benjamimgois";
     repo = pname;
     rev = version;
-    hash = "sha256-E4SMUL9rpDSSdprX4fPyGCHCowdQavjhGIhV3r4jeiw=";
+    hash = "sha256-nV8pcFBxrOlj4ebfLZF2gQwKt4bt+wtD72sXepu5kRI=";
   };
 
   outputs = [ "out" "man" ];
@@ -65,11 +66,13 @@ in stdenv.mkDerivation rec {
   ];
 
   buildInputs = [
-    libX11
+    libGL
+    libGLU
     libqt5pas
+    libX11
   ];
 
-  NIX_LDFLAGS = "--as-needed -rpath ${lib.makeLibraryPath buildInputs}";
+  NIX_LDFLAGS = "-lGLU -rpath ${lib.makeLibraryPath buildInputs}";
 
   buildPhase = ''
     runHook preBuild
@@ -85,7 +88,6 @@ in stdenv.mkDerivation rec {
       git
       gnugrep
       libnotify
-      mesa-demos
       polkit
       procps
       systemd
