@@ -45,8 +45,10 @@ in
 
     security.wrappers = mkIf cfg.enableSysAdminCapability {
       replay-sorcery = {
-        source = "${nur.replay-sorcery}/bin/replay-sorcery";
+        owner = "root";
+        group = "root";
         capabilities = "cap_sys_admin+ep";
+        source = "${nur.replay-sorcery}/bin/replay-sorcery";
       };
     };
 
