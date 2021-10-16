@@ -52,7 +52,7 @@ in stdenv.mkDerivation rec {
     repo = "MangoHud";
     rev = "v${version}";
     fetchSubmodules = true;
-    sha256 = "RRtti0VnB6SXrpFYaEqANvpgvP/Dkvc+x/I40AXaspU=";
+    sha256 = "sha256-RRtti0VnB6SXrpFYaEqANvpgvP/Dkvc+x/I40AXaspU=";
   };
 
   outputs = [ "out" "doc" "man" ];
