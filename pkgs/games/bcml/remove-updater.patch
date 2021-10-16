@@ -178,7 +178,7 @@ index b837396..e5980fa 100644
                              <OverlayTrigger
                                  overlay={
 diff --git a/bcml/util.py b/bcml/util.py
-index fef9665..9849631 100644
+index a1d3cb2..643310d 100644
 --- a/bcml/util.py
 +++ b/bcml/util.py
 @@ -579,7 +579,6 @@ DEFAULT_SETTINGS = {
