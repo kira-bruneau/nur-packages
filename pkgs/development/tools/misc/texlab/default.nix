@@ -16,10 +16,10 @@ rustPlatform.buildRustPackage rec {
     owner = "latex-lsp";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-iXsV7zt190GH0kTMpdmf8xHk4cqtCVwq6LDICmhe5qU=";
+    sha256 = "sha256-iXsV7zt190GH0kTMpdmf8xHk4cqtCVwq6LDICmhe5qU=";
   };
 
-  cargoHash = "sha256-Yqn6VpAKw93QvkxuwNcYvrQm0C4TfisRDcmFy95/yw8=";
+  cargoSha256 = "sha256-Yqn6VpAKw93QvkxuwNcYvrQm0C4TfisRDcmFy95/yw8=";
 
   outputs = [ "out" "man" ];
 

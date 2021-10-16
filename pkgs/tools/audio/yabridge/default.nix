@@ -20,7 +20,7 @@ let
       owner = "fraillt";
       repo = "bitsery";
       rev = "v${version}";
-      hash = "sha256-Bxdtjn2v2lP2lCnvjzmct6QHT7FpwmXoSZtd2oEFS4w=";
+      sha256 = "sha256-Bxdtjn2v2lP2lCnvjzmct6QHT7FpwmXoSZtd2oEFS4w=";
     };
   };
 
@@ -31,7 +31,7 @@ let
       owner = "Naios";
       repo = "function2";
       rev = version;
-      hash = "sha256-JceZU8ZvtYhFheh8BjMvjjZty4hcYxHEK+IIo5X4eSk=";
+      sha256 = "sha256-JceZU8ZvtYhFheh8BjMvjjZty4hcYxHEK+IIo5X4eSk=";
     };
   };
 
@@ -42,7 +42,7 @@ let
       owner = "marzer";
       repo = "tomlplusplus";
       rev = "v${version}";
-      hash = "sha256-i6yAEqwkinkPEzzb6ynXytS1SEOUDwi8SixMf62NVzs=";
+      sha256 = "sha256-i6yAEqwkinkPEzzb6ynXytS1SEOUDwi8SixMf62NVzs=";
     };
   };
 
@@ -66,7 +66,7 @@ in multiStdenv.mkDerivation rec {
     owner = "robbert-vdh";
     repo = pname;
     rev = version;
-    hash = "sha256-SLiksc8lQo2A5sefKbcaJyhi8vPdp2p2Jbc7bvM0sDw=";
+    sha256 = "sha256-SLiksc8lQo2A5sefKbcaJyhi8vPdp2p2Jbc7bvM0sDw=";
   };
 
   # Unpack subproject sources

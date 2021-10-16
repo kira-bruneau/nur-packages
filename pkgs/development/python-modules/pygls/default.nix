@@ -18,7 +18,7 @@ buildPythonPackage rec {
     owner = "openlawlibrary";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-zgQ5m198HMyFFrASSYCzn0EDLLeVy2j4LD0rEyEgahQ=";
+    sha256 = "sha256-zgQ5m198HMyFFrASSYCzn0EDLLeVy2j4LD0rEyEgahQ=";
   };
 
   SETUPTOOLS_SCM_PRETEND_VERSION = version;

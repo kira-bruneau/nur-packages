@@ -16,7 +16,7 @@ buildPythonPackage rec {
     owner = "facelessuser";
     repo = pname;
     rev = version;
-    hash = "sha256-/FWaBfnoTzCQEkj5ZYoOjWyLRbC3LhowCrjWNju6LyU=";
+    sha256 = "sha256-/FWaBfnoTzCQEkj5ZYoOjWyLRbC3LhowCrjWNju6LyU=";
   };
 
   propagatedBuildInputs = [ markdown ];

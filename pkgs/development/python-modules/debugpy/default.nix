@@ -23,7 +23,7 @@ buildPythonPackage rec {
     owner = "Microsoft";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-ULxVoZuMNDL0Win/+55RnbkCPZ8OI8nhSKshvJOMFQ4=";
+    sha256 = "sha256-ULxVoZuMNDL0Win/+55RnbkCPZ8OI8nhSKshvJOMFQ4=";
   };
 
   patches = [

@@ -18,7 +18,7 @@ buildPythonApplication rec {
     owner = "regen100";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-eZBnygEYjLzk29tvLGg1JdhCECc5x2MewHRSChMuCjo=";
+    sha256 = "sha256-eZBnygEYjLzk29tvLGg1JdhCECc5x2MewHRSChMuCjo=";
   };
 
   patches = [
