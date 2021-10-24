@@ -1,6 +1,7 @@
 { lib
 , multiStdenv
 , fetchFromGitHub
+, fetchpatch
 , substituteAll
 , libnotify
 , wine
@@ -86,6 +87,12 @@ in multiStdenv.mkDerivation rec {
       src = ./hardcode-dependencies.patch;
       inherit libnotify wine;
     })
+    # Remove with next yabridge update
+    (fetchpatch {
+      name = "fix-for-wine-6.20.patch";
+      url = "https://github.com/robbert-vdh/yabridge/commit/5be149cb525a638f7fc3adf84918c8239ee50ecf.patch";
+      sha256 = "sha256-x/gfn4mKZIGQ4M0o/0LlZF8i8wZDx/bkwf8wp0BGDBo=";
+    })
   ];
 
   postPatch = ''
@@ -122,8 +129,8 @@ in multiStdenv.mkDerivation rec {
   ];
 
   preConfigure = ''
-    sed -i "214s|xcb.*|xcb_32bit_dep = winegcc.find_library('xcb', dirs: [ '${lib.getLib pkgsi686Linux.xorg.libxcb}/lib', ])|" meson.build
-    sed -i "192 i '${lib.getLib pkgsi686Linux.boost}/lib'," meson.build
+    sed -i "221s|xcb.*|xcb_32bit_dep = winegcc.find_library('xcb', dirs: [ '${lib.getLib pkgsi686Linux.xorg.libxcb}/lib', ])|" meson.build
+    sed -i "199 i '${lib.getLib pkgsi686Linux.boost}/lib'," meson.build
   '';
 
   installPhase = ''
