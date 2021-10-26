@@ -35,6 +35,9 @@ buildPythonPackage rec {
     pytestCheckHook
   ];
 
+  # Fixes hanging tests on Darwin
+  __darwinAllowLocalNetworking = true;
+
   pythonImportsCheck = [ "pygls" ];
 
   meta = with lib; {
