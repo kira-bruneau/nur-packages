@@ -57,6 +57,6 @@ stdenv.mkDerivation rec {
     };
     maintainers = with maintainers; [ kira-bruneau ];
     platforms = platforms.all;
-    broken = stdenv.isDarwin;
+    broken = stdenv.isDarwin; # SDL2_mixer now depends on timidity which is linux only
   };
 }
