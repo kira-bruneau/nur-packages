@@ -94,7 +94,8 @@ stdenv.mkDerivation rec {
     homepage = "https://gitlab.com/news-flash/news_flash_gtk";
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ kira-bruneau ];
-    platforms = platforms.linux; # libhandy
+    platforms = platforms.unix;
     mainProgram = "com.gitlab.newsflash";
+    broken = stdenv.isDarwin; # webkitgtk doesn't build on Darwin
   };
 }
