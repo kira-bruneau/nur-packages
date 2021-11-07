@@ -31,8 +31,9 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     runHook preInstall
-    mkdir -p "$out/bin"
+    mkdir -p "$out/bin" "$out/share/licenses/VVVVVV"
     cp VVVVVV "$out/bin"
+    cp ../../LICENSE.md "$out/share/licenses/VVVVVV"
     runHook postInstall
   '';
 

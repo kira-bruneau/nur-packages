@@ -42,11 +42,17 @@ stdenvNoCC.mkDerivation {
 
   installPhase = ''
     runHook preInstall
-    mkdir -p "$out/share/VVVVVV" "$out/share/applications" "$out/share/pixmaps" "$out/bin"
+
+    mkdir -p \
+     "$out/share/VVVVVV" \
+     "$out/share/applications" \
+     "$out/share/pixmaps" \
+     "$out/bin"
 
     cp $src "$out/share/VVVVVV/data.zip"
     cp ${desktopItem}/share/applications/* "$out/share/applications"
     cp VVVVVV.png "$out/share/pixmaps"
+    ln -s ${VVVVVV}/share/licenses "$out/share"
 
     makeWrapper ${VVVVVV}/bin/VVVVVV "$out/bin/VVVVVV" \
       --add-flags "-assets $out/share/VVVVVV/data.zip"
