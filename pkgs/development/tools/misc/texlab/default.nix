@@ -44,5 +44,6 @@ rustPlatform.buildRustPackage rec {
     license = licenses.mit;
     maintainers = with maintainers; [ doronbehar kira-bruneau ];
     platforms = platforms.all;
+    broken = stdenv.isDarwin; # bitvec fails to compile (https://github.com/NixOS/nixpkgs/issues/140369)
   };
 }
