@@ -90,8 +90,7 @@ in
     rofi-unwrapped = callPackage ./applications/misc/rofi-wayland { };
   };
 
-  runescape-launcher = callPackage ./games/runescape-launcher/wrapper.nix { };
-  runescape-launcher-unwrapped = callPackage ./games/runescape-launcher { };
+  runescape-launcher = callPackage ./games/runescape-launcher/fhsenv.nix { };
 
   texlab = callPackage ./development/tools/misc/texlab {
     inherit (darwin.apple_sdk.frameworks) Security CoreServices;
