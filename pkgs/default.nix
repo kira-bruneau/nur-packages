@@ -111,11 +111,7 @@ in
     };
   };
 
-  VVVVVV = callPackage ./games/VVVVVV/wrapper.nix {
-    inherit (darwin.apple_sdk.frameworks) Foundation;
-  };
-
-  VVVVVV-unwrapped = callPackage ./games/VVVVVV {
+  VVVVVV = callPackage ./games/VVVVVV/with-assets.nix {
     inherit (darwin.apple_sdk.frameworks) Foundation;
   };
 
