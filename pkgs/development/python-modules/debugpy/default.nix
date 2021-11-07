@@ -80,6 +80,9 @@ buildPythonPackage rec {
   # Override default arguments in pytest.ini
   pytestFlagsArray = [ "--timeout=0" "-n=$NIX_BUILD_CORES" ];
 
+  # Fixes hanging tests on Darwin
+  __darwinAllowLocalNetworking = true;
+
   pythonImportsCheck = [ "debugpy" ];
 
   meta = with lib; {
@@ -88,6 +91,5 @@ buildPythonPackage rec {
     license = licenses.mit;
     maintainers = with maintainers; [ kira-bruneau ];
     platforms = [ "x86_64-linux" "i686-linux" "x86_64-darwin" "i686-darwin" "aarch64-darwin" ];
-    broken = stdenv.isDarwin;
   };
 }
