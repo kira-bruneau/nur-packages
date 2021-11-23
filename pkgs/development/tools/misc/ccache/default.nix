@@ -108,10 +108,10 @@ let ccache = stdenv.mkDerivation rec {
         done
       '';
     };
-  };
 
-  passthru.updateScript = nix-update-script {
-    attrPath = pname;
+    updateScript = nix-update-script {
+      attrPath = pname;
+    };
   };
 
   meta = with lib; {
