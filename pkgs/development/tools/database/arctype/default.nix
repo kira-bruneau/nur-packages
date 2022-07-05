@@ -19,6 +19,6 @@ appimageTools.wrapType2 rec {
     homepage = "https://www.arctype.com";
     license = licenses.unfree;
     maintainers = with maintainers; [ kira-bruneau ];
-    platforms = platforms.linux;
+    platforms = [ "x86_64-linux" ];
   };
 }
