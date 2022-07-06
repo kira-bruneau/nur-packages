@@ -18,23 +18,11 @@ in
 
   debugpy = callPackage ./debugpy { };
 
-  mkdocs-material = callPackage ./mkdocs-material { };
-
-  mkdocs-material-extensions = callPackage ./mkdocs-material-extensions {
-    # Pass a build of mkdocs-material without
-    # mkdocs-material-extensions for tests
-    mkdocs-material = mkdocs-material.override {
-      mkdocs-material-extensions = null;
-    };
-  };
-
   oead = callPackage ./oead {
     inherit (pkgs) cmake;
   };
 
   pygls = callPackage ./pygls { };
-
-  pymdown-extensions = callPackage ./pymdown-extensions { };
 
   pytest-datadir = callPackage ./pytest-datadir { };
 
