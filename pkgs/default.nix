@@ -4,7 +4,7 @@ with final;
 
 let
   callPackage = pkgs.newScope final;
-  pythonOverrides = import ./development/python-modules final;
+  pythonOverlay = import ./development/python-modules final;
 in
 {
   inherit callPackage;
@@ -82,8 +82,9 @@ in
     inherit steam-run yad;
   };
 
-  python2Packages = recurseIntoAttrs (pythonOverrides (pkgs.python2Packages // python2Packages) pkgs.python2Packages);
-  python3Packages = recurseIntoAttrs (pythonOverrides (pkgs.python3Packages // python3Packages) pkgs.python3Packages);
+  python2Packages = recurseIntoAttrs (pythonOverlay (pkgs.python2Packages // python2Packages) pkgs.python2Packages);
+
+  python3Packages = recurseIntoAttrs (pythonOverlay (pkgs.python3Packages // python3Packages) pkgs.python3Packages);
 
   replay-sorcery = callPackage ./tools/video/replay-sorcery { };
 
