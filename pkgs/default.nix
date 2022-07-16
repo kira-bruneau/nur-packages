@@ -4,7 +4,19 @@ with final;
 
 let
   callPackage = pkgs.newScope final;
-  pythonOverlay = import ./development/python-modules final;
+
+  mapDisabledToBroken = attrs:
+    (removeAttrs attrs [ "disabled" ]) // lib.optionalAttrs (attrs.disabled or false) {
+      meta = (attrs.meta or {}) // {
+        broken = attrs.disabled;
+      };
+    };
+
+  pythonOverlay = pyfinal:
+    import ./development/python-modules final (pyfinal // {
+      buildPythonApplication = attrs: pyfinal.buildPythonApplication (mapDisabledToBroken attrs);
+      buildPythonPackage = attrs: pyfinal.buildPythonPackage (mapDisabledToBroken attrs);
+    });
 in
 {
   inherit callPackage;

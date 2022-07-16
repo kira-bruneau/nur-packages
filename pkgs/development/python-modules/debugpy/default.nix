@@ -1,6 +1,8 @@
 { lib
 , stdenv
 , buildPythonPackage
+, pythonOlder
+, pythonAtLeast
 , fetchFromGitHub
 , substituteAll
 , fetchpatch
@@ -13,14 +15,14 @@
 , pytest-xdist
 , pytestCheckHook
 , requests
-, isPy3k
-, pythonAtLeast
 }:
 
 buildPythonPackage rec {
   pname = "debugpy";
   version = "1.6.2";
   format = "setuptools";
+
+  disabled = pythonOlder "3.7";
 
   src = fetchFromGitHub {
     owner = "Microsoft";
@@ -76,7 +78,7 @@ buildPythonPackage rec {
     }.${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}")}
   )'';
 
-  doCheck = isPy3k;
+  doCheck = pythonAtLeast "3";
 
   checkInputs = [
     django
@@ -122,7 +124,5 @@ buildPythonPackage rec {
     # https://github.com/NixOS/nixpkgs/pull/172397
     # https://github.com/pyca/pyopenssl/issues/873
     badPlatforms = [ "aarch64-darwin" ];
-
-    broken = !isPy3k;
   };
 }
