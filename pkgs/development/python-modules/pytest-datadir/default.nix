@@ -7,14 +7,14 @@
 
 buildPythonPackage rec {
   pname = "pytest-datadir";
-  version = "1.3.1";
+  version = "1.4.1";
   format = "pyproject";
 
   src = fetchFromGitHub {
     owner = "gabrielcnr";
     repo = "pytest-datadir";
     rev = "refs/tags/${version}";
-    sha256 = "sha256-zv7f416GI+2E5daN33kEvFIQr/N1NpAL59Vii7W5j08=";
+    sha256 = "sha256-HyJ0rU1nHqRv8SHFS8m3GZ5409+JZIkoDgIVjy4ol54=";
   };
 
   SETUPTOOLS_SCM_PRETEND_VERSION = version;
