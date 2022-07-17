@@ -2,7 +2,6 @@
 , stdenv
 , buildPythonPackage
 , pythonOlder
-, pythonAtLeast
 , fetchFromGitHub
 , substituteAll
 , fetchpatch
@@ -77,8 +76,6 @@ buildPythonPackage rec {
       "aarch64-darwin" = "-std=c++11 -lc -D_REENTRANT -dynamiclib -o attach_arm64.dylib";
     }.${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}")}
   )'';
-
-  doCheck = pythonAtLeast "3";
 
   checkInputs = [
     django
