@@ -22,6 +22,6 @@
       }
     ) // rec {
       overlays = import ./overlays;
-      nixosModules = nixpkgs.lib.mapAttrs (name: value: import value) (import ./modules);
+      nixosModules = nixpkgs.lib.mapAttrs (name: value: import value) (import ./nixos/modules);
     };
 }
