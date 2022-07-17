@@ -19,6 +19,14 @@
       rec {
         checks = packages;
         packages = flake-utils.lib.filterPackages system (flake-utils.lib.flattenTree nurPkgs);
+        apps = {
+          sync = {
+            type = "app";
+            program = toString (nurPkgs.callPackage ./maintainers/scripts/sync.nix {
+              rev = nixpkgs.rev;
+            });
+          };
+        };
       }
     ) // rec {
       overlays = import ./overlays;
