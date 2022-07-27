@@ -3,7 +3,6 @@
 with lib;
 
 let
-  nur = import ../../.. { inherit pkgs; };
   cfg = config.services.replay-sorcery;
   configFile = generators.toKeyValue {} cfg.settings;
 in
@@ -39,7 +38,7 @@ in
 
   config = mkIf cfg.enable {
     environment = {
-      systemPackages = [ nur.replay-sorcery ];
+      systemPackages = [ pkgs.replay-sorcery ];
       etc."replay-sorcery.conf".text = configFile;
     };
 
@@ -48,12 +47,12 @@ in
         owner = "root";
         group = "root";
         capabilities = "cap_sys_admin+ep";
-        source = "${nur.replay-sorcery}/bin/replay-sorcery";
+        source = "${pkgs.replay-sorcery}/bin/replay-sorcery";
       };
     };
 
     systemd = {
-      packages = [ nur.replay-sorcery ];
+      packages = [ pkgs.replay-sorcery ];
       user.services.replay-sorcery = {
         wantedBy = mkIf cfg.autoStart [ "graphical-session.target" ];
         partOf = mkIf cfg.autoStart [ "graphical-session.target" ];

@@ -3,7 +3,6 @@
 with lib;
 
 let
-  nur = import ../.. { inherit pkgs; };
   cfg = config.programs.gamemode;
   settingsFormat = pkgs.formats.ini { };
   configFile = settingsFormat.generate "gamemode.ini" cfg.settings;
@@ -49,7 +48,7 @@ in
 
   config = mkIf cfg.enable {
     environment = {
-      systemPackages = [ nur.gamemode ];
+      systemPackages = [ pkgs.gamemode ];
       etc."gamemode.ini".source = configFile;
     };
 
@@ -59,14 +58,14 @@ in
         gamemoded = {
           owner = "root";
           group = "root";
-          source = "${nur.gamemode}/bin/gamemoded";
+          source = "${pkgs.gamemode}/bin/gamemoded";
           capabilities = "cap_sys_nice+ep";
         };
       };
     };
 
     systemd = {
-      packages = [ nur.gamemode ];
+      packages = [ pkgs.gamemode ];
       user.services.gamemoded = {
         # The upstream service already defines this, but doesn't get applied.
         # See https://github.com/NixOS/nixpkgs/issues/81138
