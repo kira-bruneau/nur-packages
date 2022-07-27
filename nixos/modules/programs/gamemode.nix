@@ -65,23 +65,25 @@ in
 
     systemd = {
       packages = [ nur.gamemode ];
-      user.services.gamemoded.serviceConfig = {
-        Environment = [
-          # Use pkexec from the security wrappers to allow users to
-          # run libexec/cpugovctl & libexec/gpuclockctl as root with
-          # the the actions defined in share/polkit-1/actions.
-          #
-          # Use a link farm to make sure other wrapped executables
-          # aren't included in PATH.
-          "PATH=${pkgs.linkFarm "pkexec" [
-            {
-              name = "pkexec";
-              path = "${config.security.wrapperDir}/pkexec";
-            }
-          ]}"
-        ];
+      user.services.gamemoded = {
+        # The upstream service already defines this, but doesn't get applied.
+        # See https://github.com/NixOS/nixpkgs/issues/81138
+        wantedBy = [ "default.target" ];
 
-        ExecStart = mkIf cfg.enableRenice [
+        # Use pkexec from the security wrappers to allow users to
+        # run libexec/cpugovctl & libexec/gpuclockctl as root with
+        # the the actions defined in share/polkit-1/actions.
+        #
+        # This uses a link farm to make sure other wrapped executables
+        # aren't included in PATH.
+        environment.PATH = mkForce (pkgs.linkFarm "pkexec" [
+          {
+            name = "pkexec";
+            path = "${config.security.wrapperDir}/pkexec";
+          }
+        ]);
+
+        serviceConfig.ExecStart = mkIf cfg.enableRenice [
           "" # Tell systemd to clear the existing ExecStart list, to prevent appending to it.
           "${config.security.wrapperDir}/gamemoded"
         ];
