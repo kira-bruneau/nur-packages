@@ -17,7 +17,7 @@ buildPythonApplication rec {
   src = fetchFromGitHub {
     owner = "regen100";
     repo = pname;
-    rev = "v${version}";
+    rev = "refs/tags/v${version}";
     sha256 = "sha256-FOyyXSgoFpX4mOHFyZtVW618M1Xs7k+IioJzm1sdkKY=";
   };
 

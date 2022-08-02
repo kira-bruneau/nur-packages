@@ -21,7 +21,7 @@ buildPythonPackage rec {
   src = fetchFromGitHub {
     owner = "openlawlibrary";
     repo = pname;
-    rev = "v${version}";
+    rev = "refs/tags/v${version}";
     sha256 = "sha256-PEfGxOUsiZ5WLmoQkOP2RRWJlIKi+42lOu55C3C+k8A=";
   };
 
