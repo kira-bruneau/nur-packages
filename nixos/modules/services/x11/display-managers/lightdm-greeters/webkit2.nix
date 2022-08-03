@@ -89,7 +89,7 @@ in
       webkitTheme = mkOption {
         type = types.either types.path (types.enum [ "antergos" "simple" ]);
         default = "antergos";
-        example = literalExample ''
+        example = literalExpression ''
           fetchzip {
             url = "https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases/download/v3.2.0/lightdm-webkit-theme-litarvan-3.2.0.tar.gz";
             stripRoot = false;
@@ -105,7 +105,7 @@ in
         backgroundImages = mkOption {
           type = types.path;
           default = dirOf ldmcfg.background;
-          example = literalExample "\${pkgs.gnome.gnome-backgrounds}/share/backgrounds/gnome";
+          example = literalExpression "\${pkgs.gnome.gnome-backgrounds}/share/backgrounds/gnome";
           description = ''
             Path to directory that contains background images for use by themes.
           '';
