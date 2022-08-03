@@ -51,6 +51,12 @@ let
   };
 
   # Derived from subprojects/spdlog.wrap
+  #
+  # NOTE: We only statically link spdlog due to a bug in pressure-vessel:
+  # https://github.com/ValveSoftware/steam-runtime/issues/511
+  #
+  # Once this fix is released upstream, we should switch back to using
+  # the system provided spdlog
   spdlog = rec {
     version = "1.8.5";
     src = fetchFromGitHub {
