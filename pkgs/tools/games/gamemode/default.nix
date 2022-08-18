@@ -16,14 +16,14 @@
 , procps
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "gamemode";
   version = "1.7";
 
   src = fetchFromGitHub {
     owner = "FeralInteractive";
-    repo = pname;
-    rev = "refs/tags/${version}";
+    repo = "gamemode";
+    rev = "refs/tags/${finalAttrs.version}";
     sha256 = "sha256-DIFcmWFkoZOklo1keYcCl6n2GJgzWKC8usHFcJmfarU=";
   };
 
@@ -102,4 +102,4 @@ stdenv.mkDerivation rec {
     platforms = platforms.linux;
     mainProgram = "gamemoderun";
   };
-}
+})

@@ -62,15 +62,15 @@ let
     sha256 = "sha256-6cuEUa+BXa6MnAYIBq873n0NRLadcPfMX+kpf4ysE6M=";
   };
 in
-multiStdenv.mkDerivation rec {
+multiStdenv.mkDerivation (finalAttrs: {
   pname = "yabridge";
   version = "4.0.2";
 
   # NOTE: Also update yabridgectl's cargoHash when this is updated
   src = fetchFromGitHub {
     owner = "robbert-vdh";
-    repo = pname;
-    rev = "refs/tags/${version}";
+    repo = "yabridge";
+    rev = "refs/tags/${finalAttrs.version}";
     sha256 = "sha256-rce6gxnB+RpG84Xakw0h4vZ8lyEQ41swWQGuwpomV2I=";
   };
 
@@ -144,7 +144,7 @@ multiStdenv.mkDerivation rec {
   '';
 
   passthru.updateScript = nix-update-script {
-    attrPath = pname;
+    attrPath = finalAttrs.pname;
   };
 
   meta = with lib; {
@@ -154,4 +154,4 @@ multiStdenv.mkDerivation rec {
     maintainers = with maintainers; [ kira-bruneau ];
     platforms = [ "x86_64-linux" ];
   };
-}
+})

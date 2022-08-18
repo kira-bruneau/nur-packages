@@ -75,7 +75,7 @@ buildPythonApplication rec {
 
   src = fetchFromGitHub {
     owner = "NiceneNerd";
-    repo = pname;
+    repo = "bcml";
     rev = "refs/tags/v${version}";
     sha256 = "sha256-WauhEgqbXeP6MyAIv6L9OKGzNoxtD3GFqsxn+gzqzXE=";
   };
