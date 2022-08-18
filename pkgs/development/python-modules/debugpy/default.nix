@@ -23,7 +23,7 @@ buildPythonPackage rec {
   disabled = pythonOlder "3.7";
 
   src = fetchFromGitHub {
-    owner = "Microsoft";
+    owner = "microsoft";
     repo = "debugpy";
     rev = "refs/tags/v${version}";
     sha256 = "sha256-ERsqs+pCJfYQInOWPBhM/7hC5TTfQAksYJwFCcd+vlk=";
@@ -94,7 +94,7 @@ buildPythonPackage rec {
 
   meta = with lib; {
     description = "An implementation of the Debug Adapter Protocol for Python";
-    homepage = "https://github.com/microsoft/debugpy";
+    homepage = src.meta.homepage;
     license = licenses.mit;
     maintainers = with maintainers; [ kira-bruneau ];
     platforms = [ "x86_64-linux" "i686-linux" "aarch64-linux" "x86_64-darwin" "i686-darwin" "aarch64-darwin" ];

@@ -23,7 +23,7 @@ rustPlatform.buildRustPackage rec {
 
   meta = with lib; {
     description = "Decompress / compress mozlz4 files";
-    homepage = "https://github.com/jusw85/mozlz4";
+    homepage = src.meta.homepage;
     license = licenses.mit;
     maintainers = with maintainers; [ kira-bruneau ];
   };

@@ -37,7 +37,7 @@ buildPythonPackage {
 
   meta = with lib; {
     description = "A library for manipulating Breath of the Wild Havok packfiles";
-    homepage = "https://github.com/krenyy/botw_havok";
+    homepage = src.meta.homepage;
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ kira-bruneau ];
     broken = stdenv.isDarwin; # oead cmake --build fails with exit code 2 on darwin

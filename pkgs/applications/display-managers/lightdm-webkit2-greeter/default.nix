@@ -73,7 +73,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = with lib; {
     description = "A modern, visually appealing greeter for LightDM";
-    homepage = "https://github.com/Antergos/web-greeter";
+    homepage = src.meta.homepage;
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ kira-bruneau ];
     platforms = platforms.linux;

@@ -54,7 +54,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = with lib; {
     description = "An open-source, instant-replay solution for Linux";
-    homepage = "https://github.com/matanui159/ReplaySorcery";
+    homepage = src.meta.homepage;
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ kira-bruneau ];
     platforms = platforms.linux;

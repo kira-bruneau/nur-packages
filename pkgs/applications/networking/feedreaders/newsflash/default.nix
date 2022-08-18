@@ -95,7 +95,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = with lib; {
     description = "A modern feed reader designed for the GNOME desktop";
-    homepage = "https://gitlab.com/news-flash/news_flash_gtk";
+    homepage = src.meta.homepage;
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ kira-bruneau stunkymonkey ];
     platforms = platforms.unix;

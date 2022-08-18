@@ -96,7 +96,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = with lib; {
     description = "Optimise Linux system performance on demand";
-    homepage = "https://github.com/FeralInteractive/GameMode";
+    homepage = src.meta.homepage;
     license = licenses.bsd3;
     maintainers = with maintainers; [ kira-bruneau ];
     platforms = platforms.linux;

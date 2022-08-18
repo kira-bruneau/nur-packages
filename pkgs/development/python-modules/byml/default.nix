@@ -41,7 +41,7 @@ buildPythonPackage rec {
 
   meta = with lib; {
     description = "Nintendo BYML or BYAML parser, writer and converter";
-    homepage = "https://github.com/zeldamods/byml-v2";
+    homepage = src.meta.homepage;
     license = licenses.gpl2Plus;
     maintainers = with maintainers; [ kira-bruneau ];
     broken = stdenv.isDarwin; # oead cmake --build fails with exit code 2 on darwin
