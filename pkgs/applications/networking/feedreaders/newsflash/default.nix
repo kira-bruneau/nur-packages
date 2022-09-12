@@ -87,7 +87,7 @@ stdenv.mkDerivation (finalAttrs: {
   ]);
 
   preFixup = ''
-    gappsWrapperArgs+=(--prefix PATH : "${lib.makeBinPath [
+    gappsWrapperArgs+=(--suffix PATH : "${lib.makeBinPath [
       # Open links in browser
       xdg-utils
     ]}")
