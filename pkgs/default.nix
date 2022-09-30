@@ -32,11 +32,13 @@ in
 
   bcml-gtk = python3Packages.callPackage ./games/bcml {
     gui = "gtk";
+    nodejs = nodejs-16_x-openssl_1_1;
     wrapQtAppsHook = null;
   };
 
   bcml-qt = python3Packages.callPackage ./games/bcml {
     gui = "qt";
+    nodejs = nodejs-16_x-openssl_1_1;
     inherit (qt5) wrapQtAppsHook;
   };
 
