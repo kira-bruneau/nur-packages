@@ -46,7 +46,7 @@ buildPythonApplication rec {
 
   meta = with lib; {
     description = "Tool to submit code to Gerrit";
-    homepage = src.meta.homepage;
+    homepage = "https://opendev.org/opendev/git-review";
     license = licenses.asl20;
     maintainers = with maintainers; [ kira-bruneau ];
 

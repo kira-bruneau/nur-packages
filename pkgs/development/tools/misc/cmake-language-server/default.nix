@@ -48,7 +48,7 @@ buildPythonApplication rec {
 
   meta = with lib; {
     description = "CMake LSP Implementation";
-    homepage = src.meta.homepage;
+    homepage = "https://github.com/regen100/cmake-language-server";
     license = licenses.mit;
     maintainers = with maintainers; [ kira-bruneau ];
 

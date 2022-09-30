@@ -112,7 +112,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = with lib; {
     description = "An opensource project that aims to create a Graphical UI to help manage Linux overlays";
-    homepage = src.meta.homepage;
+    homepage = "https://github.com/benjamimgois/goverlay";
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ kira-bruneau ];
     platforms = platforms.linux;

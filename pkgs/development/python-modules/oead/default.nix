@@ -45,7 +45,7 @@ buildPythonPackage rec {
 
   meta = with lib; {
     description = "Library for recent Nintendo EAD formats in first-party games";
-    homepage = src.meta.homepage;
+    homepage = "https://github.com/zeldamods/oead";
     license = licenses.gpl2Plus;
     maintainers = with maintainers; [ kira-bruneau ];
     broken = stdenv.isDarwin; # cmake --build fails with exit code 2 on darwin

@@ -75,7 +75,7 @@ buildPythonApplication rec {
 
   src = fetchFromGitHub {
     owner = "NiceneNerd";
-    repo = "bcml";
+    repo = "BCML";
     rev = "refs/tags/v${version}";
     sha256 = "sha256-WauhEgqbXeP6MyAIv6L9OKGzNoxtD3GFqsxn+gzqzXE=";
   };
@@ -167,7 +167,7 @@ buildPythonApplication rec {
 
   meta = with lib; {
     description = "A mod merging and managing tool for The Legend of Zelda: Breath of the Wild (${guiName} GUI)";
-    homepage = src.meta.homepage;
+    homepage = "https://github.com/NiceneNerd/BCML";
     # Unfree due to 7zip's non-free UnRAR license restriction
     # Would be gpl3Plus without the restriction
     license = licenses.unfreeRedistributable;

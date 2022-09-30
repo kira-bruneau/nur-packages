@@ -94,7 +94,7 @@ buildPythonPackage rec {
 
   meta = with lib; {
     description = "An implementation of the Debug Adapter Protocol for Python";
-    homepage = src.meta.homepage;
+    homepage = "https://github.com/microsoft/debugpy";
     license = licenses.mit;
     maintainers = with maintainers; [ kira-bruneau ];
     platforms = [ "x86_64-linux" "i686-linux" "aarch64-linux" "x86_64-darwin" "i686-darwin" "aarch64-darwin" ];

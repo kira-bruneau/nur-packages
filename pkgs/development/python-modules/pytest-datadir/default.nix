@@ -24,7 +24,7 @@ buildPythonPackage rec {
 
   meta = with lib; {
     description = "Pytest plugin for manipulating test data directories and files";
-    homepage = src.meta.homepage;
+    homepage = "https://github.com/gabrielcnr/pytest-datadir";
     license = licenses.mit;
     maintainers = with maintainers; [ kira-bruneau ];
   };

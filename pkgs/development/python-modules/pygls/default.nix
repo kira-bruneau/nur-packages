@@ -47,7 +47,7 @@ buildPythonPackage rec {
 
   meta = with lib; {
     description = "Pythonic generic implementation of the Language Server Protocol";
-    homepage = src.meta.homepage;
+    homepage = "https://github.com/openlawlibrary/pygls";
     license = licenses.asl20;
     maintainers = with maintainers; [ kira-bruneau ];
   };

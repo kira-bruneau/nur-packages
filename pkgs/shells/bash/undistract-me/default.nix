@@ -76,7 +76,7 @@ stdenvNoCC.mkDerivation {
 
   meta = with lib; {
     description = "Notifies you when long-running terminal commands complete";
-    homepage = src.meta.homepage;
+    homepage = "https://github.com/jml/undistract-me";
     license = licenses.mit;
     maintainers = with maintainers; [ kira-bruneau ];
     platforms = platforms.linux;

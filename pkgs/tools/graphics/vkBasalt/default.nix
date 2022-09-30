@@ -34,7 +34,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = with lib; {
     description = "A Vulkan post processing layer for Linux";
-    homepage = src.meta.homepage;
+    homepage = "https://github.com/DadSchoorse/vkBasalt";
     license = licenses.zlib;
     maintainers = with maintainers; [ kira-bruneau ];
     platforms = platforms.linux;

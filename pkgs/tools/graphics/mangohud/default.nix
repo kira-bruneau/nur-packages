@@ -187,7 +187,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = with lib; {
     description = "A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more";
-    homepage = src.meta.homepage;
+    homepage = "https://github.com/flightlessmango/MangoHud";
     platforms = platforms.linux;
     license = licenses.mit;
     maintainers = with maintainers; [ kira-bruneau zeratax ];

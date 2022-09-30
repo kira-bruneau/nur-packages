@@ -36,7 +36,7 @@ buildPythonPackage rec {
 
   meta = with lib; {
     description = "Breath of the Wild RSTB parser and editing tool";
-    homepage = src.meta.homepage;
+    homepage = "https://github.com/zeldamods/rstb";
     license = licenses.gpl2Plus;
     maintainers = with maintainers; [ kira-bruneau ];
     broken = stdenv.isDarwin; # oead cmake --build fails with exit code 2 on darwin
