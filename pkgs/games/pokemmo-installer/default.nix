@@ -4,18 +4,18 @@
 , makeWrapper
 , coreutils
 , findutils
+, gnome
 , gnugrep
-, jre
+, temurin-jre-bin-17
 , openssl
 , ps
 , wget
 , which
 , xprop
-, zenity
 , libpulseaudio
 }:
-
-stdenv.mkDerivation rec {
+let inherit (gnome) zenity;
+in stdenv.mkDerivation rec {
   pname = "pokemmo-installer";
   version = "1.4.8";
 
@@ -41,7 +41,7 @@ stdenv.mkDerivation rec {
         coreutils
         findutils
         gnugrep
-        jre
+        temurin-jre-bin-17
         openssl
         ps
         wget
