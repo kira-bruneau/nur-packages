@@ -1,5 +1,6 @@
 { lib
 , buildPythonPackage
+, pythonOlder
 , fetchFromGitHub
 , setuptools-scm
 , pytestCheckHook
@@ -9,6 +10,8 @@ buildPythonPackage rec {
   pname = "pytest-datadir";
   version = "1.4.1";
   format = "pyproject";
+
+  disabled = pythonOlder "3.6";
 
   src = fetchFromGitHub {
     owner = "gabrielcnr";
