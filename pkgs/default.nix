@@ -117,9 +117,9 @@ in
     inherit (qt5) wrapQtAppsHook;
   };
 
-  vkBasalt = callPackage ./tools/graphics/vkBasalt rec {
-    vkBasalt32 = pkgsi686Linux.callPackage ./tools/graphics/vkBasalt {
-      inherit vkBasalt32;
+  vkbasalt = callPackage ./tools/graphics/vkbasalt rec {
+    vkbasalt32 = pkgsi686Linux.callPackage ./tools/graphics/vkbasalt {
+      inherit vkbasalt32;
     };
   };
 
