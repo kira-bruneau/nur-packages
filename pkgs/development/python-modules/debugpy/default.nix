@@ -108,9 +108,5 @@ buildPythonPackage rec {
     license = licenses.mit;
     maintainers = with maintainers; [ kira-bruneau ];
     platforms = [ "x86_64-linux" "i686-linux" "aarch64-linux" "x86_64-darwin" "i686-darwin" "aarch64-darwin" ];
-
-    # https://github.com/NixOS/nixpkgs/pull/172397
-    # https://github.com/pyca/pyopenssl/issues/873
-    broken = stdenv.isDarwin && stdenv.isAarch64;
   };
 }
