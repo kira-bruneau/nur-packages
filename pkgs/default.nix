@@ -96,7 +96,7 @@ in
   };
 
   protontricks = python3Packages.callPackage ./tools/package-management/protontricks {
-    inherit steam-run yad;
+    inherit bash steam-run winetricks yad;
   };
 
   python2Packages = recurseIntoAttrs (pythonModulesOverlay (prev.python2Packages // python2Packages) prev.python2Packages);
