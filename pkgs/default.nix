@@ -91,7 +91,6 @@ in
   poke = callPackage ./applications/editors/poke { };
 
   pokemmo-installer = callPackage ./games/pokemmo-installer {
-    jre = temurin-jre-bin-17;
     inherit (gnome) zenity;
   };
 
