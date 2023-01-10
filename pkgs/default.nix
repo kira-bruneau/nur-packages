@@ -123,7 +123,7 @@ in
     };
   };
 
-  VVVVVV = callPackage ./games/VVVVVV/with-assets.nix {
+  vvvvvv = callPackage ./games/vvvvvv/with-assets.nix {
     inherit (darwin.apple_sdk.frameworks) Foundation;
   };
 
