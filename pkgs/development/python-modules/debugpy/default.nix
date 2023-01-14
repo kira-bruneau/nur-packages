@@ -108,5 +108,8 @@ buildPythonPackage rec {
     license = licenses.mit;
     maintainers = with maintainers; [ kira-bruneau ];
     platforms = [ "x86_64-linux" "i686-linux" "aarch64-linux" "x86_64-darwin" "i686-darwin" "aarch64-darwin" ];
+
+    # gdb is not available for aarch64-darwin
+    badPlatforms = [ "aarch64-darwin" ];
   };
 }
