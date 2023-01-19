@@ -81,13 +81,13 @@ stdenv.mkDerivation (finalAttrs: {
     moveToOutput share/vim "$out"
   '';
 
+  # Prevent tclPackageHook from auto-wrapping all binaries, we only
+  # need to wrap poke-gui
+  dontWrapTclBinaries = true;
+
   postFixup = lib.optionalString guiSupport ''
     wrapProgram "$out/bin/poke-gui" \
       --prefix TCLLIBPATH ' ' "$TCLLIBPATH"
-
-    # Prevent tclPackageHook from auto-wrapping all binaries, we only
-    # need to wrap poke-gui
-    unset TCLLIBPATH
   '';
 
   passthru = {
