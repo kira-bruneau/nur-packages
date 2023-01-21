@@ -42,7 +42,7 @@ buildPythonApplication rec {
     pygls
   ];
 
-  checkInputs = [
+  nativeCheckInputs = [
     cmake
     cmake-format
     pytest-datadir
