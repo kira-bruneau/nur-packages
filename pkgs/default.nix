@@ -77,9 +77,9 @@ in
     mangohud32 = pkgsi686Linux.callPackage ./tools/graphics/mangohud {
       libXNVCtrl = prev.linuxPackages.nvidia_x11.settings.libXNVCtrl;
       inherit mangohud32;
-      inherit (prev.python3Packages) Mako;
+      inherit (prev.python3Packages) mako;
     };
-    inherit (prev.python3Packages) Mako;
+    inherit (prev.python3Packages) mako;
   };
 
   mozlz4 = callPackage ./tools/compression/mozlz4 { };
