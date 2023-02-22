@@ -122,10 +122,6 @@ in
     };
   };
 
-  vvvvvv = callPackage ./games/vvvvvv/with-assets.nix {
-    inherit (darwin.apple_sdk.frameworks) Foundation;
-  };
-
   yabridge = callPackage ./tools/audio/yabridge {
     wine = wineWowPackages.staging;
   };
