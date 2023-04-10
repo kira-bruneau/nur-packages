@@ -98,8 +98,6 @@ in
     inherit bash steam-run winetricks yad;
   };
 
-  python2Packages = recurseIntoAttrs (pythonModulesOverlay (prev.python2Packages // python2Packages) prev.python2Packages);
-
   python3Packages = recurseIntoAttrs (pythonModulesOverlay (prev.python3Packages // python3Packages) prev.python3Packages);
 
   replay-sorcery = callPackage ./tools/video/replay-sorcery { };
