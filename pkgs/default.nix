@@ -85,7 +85,7 @@ in
   mozlz4 = callPackage ./tools/compression/mozlz4 { };
 
   newsflash = callPackage ./applications/networking/feedreaders/newsflash {
-    webkitgtk = webkitgtk_5_0;
+    webkitgtk = webkitgtk_6_0;
   };
 
   poke = callPackage ./applications/editors/poke { };
