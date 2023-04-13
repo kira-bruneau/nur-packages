@@ -13,7 +13,6 @@
 , hwdata
 , libX11
 , mangohud32
-, vulkan-headers
 , appstream
 , glslang
 , makeWrapper
@@ -22,7 +21,6 @@
 , ninja
 , pkg-config
 , unzip
-, vulkan-loader
 , libXNVCtrl
 , wayland
 , glew
@@ -69,6 +67,21 @@ let
       sha256 = "sha256-PDjyddV5KxKGORECWUMp6YsXc3kks0T5gxKrCZKbdL4=";
     };
   };
+
+  # Derived from subprojects/vulkan-headers.wrap
+  vulkan-headers = rec {
+    version = "1.2.158";
+    src = fetchFromGitHub {
+      owner = "KhronosGroup";
+      repo = "Vulkan-Headers";
+      rev = "v${version}";
+      hash = "sha256-5uyk2nMwV1MjXoa3hK/WUeGLwpINJJEvY16kc5DEaks=";
+    };
+    patch = fetchurl {
+      url = "https://wrapdb.mesonbuild.com/v2/vulkan-headers_${version}-2/get_patch";
+      hash = "sha256-hgNYz15z9FjNHoj4w4EW0SOrQh1c4uQSnsOOrt2CDhc=";
+    };
+  };
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "mangohud";
@@ -89,7 +102,10 @@ stdenv.mkDerivation (finalAttrs: {
     cd "$sourceRoot/subprojects"
     cp -R --no-preserve=mode,ownership ${imgui.src} imgui-${imgui.version}
     cp -R --no-preserve=mode,ownership ${spdlog.src} spdlog-${spdlog.version}
+    cp -R --no-preserve=mode,ownership ${vulkan-headers.src} Vulkan-Headers-${vulkan-headers.version}
   )'';
+
+  env.NIX_CFLAGS_COMPILE = "-I${vulkan-headers.src}/include";
 
   patches = [
     # Hard code dependencies. Can't use makeWrapper since the Vulkan
@@ -127,11 +143,10 @@ stdenv.mkDerivation (finalAttrs: {
     cd subprojects
     unzip ${imgui.patch}
     unzip ${spdlog.patch}
+    unzip ${vulkan-headers.patch}
   )'';
 
   mesonFlags = [
-    "-Duse_system_vulkan=enabled"
-    "-Dvulkan_datadir=${vulkan-headers}/share"
     "-Dwith_wayland=enabled"
   ] ++ lib.optionals gamescopeSupport [
     "-Dmangoapp_layer=true"
@@ -148,7 +163,6 @@ stdenv.mkDerivation (finalAttrs: {
     ninja
     pkg-config
     unzip
-    vulkan-loader
   ];
 
   buildInputs = [
@@ -160,7 +174,6 @@ stdenv.mkDerivation (finalAttrs: {
     glew
     glfw
     nlohmann_json
-    vulkan-headers
     xorg.libXrandr
   ];
 
