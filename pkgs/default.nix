@@ -110,6 +110,8 @@ in
 
   undistract-me = callPackage ./shells/bash/undistract-me { };
 
+  ukmm = callPackage ./tools/games/ukmm { };
+
   virtualparadise = callPackage ./games/virtualparadise {
     inherit (qt5) wrapQtAppsHook;
   };
