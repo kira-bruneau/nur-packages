@@ -12,7 +12,6 @@
 , xdg-utils
 , dbus
 , hwdata
-, mangohud32
 , addOpenGLRunpath
 , appstream
 , glslang
@@ -30,7 +29,8 @@
 , glfw
 , xorg
 , gamescopeSupport ? true # build mangoapp and mangohudctl
-, lowerBitnessSupport ? stdenv.hostPlatform.is64bit # Support 32 bit on 64bit
+, multiArchSupport ? stdenv.hostPlatform.system == "x86_64-linux"
+, mangohud32
 , nix-update-script
 }:
 
@@ -129,7 +129,7 @@ stdenv.mkDerivation (finalAttrs: {
     substituteInPlace bin/mangohud.in \
       --subst-var-by libraryPath ${lib.makeSearchPath "lib/mangohud" ([
         (placeholder "out")
-      ] ++ lib.optionals lowerBitnessSupport [
+      ] ++ lib.optionals multiArchSupport [
         mangohud32
       ])} \
       --subst-var-by dataDir ${placeholder "out"}/share
@@ -185,7 +185,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   # Support 32bit Vulkan applications by linking in 32bit Vulkan layers
   # This is needed for the same reason the 32bit preload workaround is needed.
-  postInstall = lib.optionalString lowerBitnessSupport ''
+  postInstall = lib.optionalString multiArchSupport ''
     ln -s ${mangohud32}/share/vulkan/implicit_layer.d/MangoHud.x86.json \
       "$out/share/vulkan/implicit_layer.d"
 
