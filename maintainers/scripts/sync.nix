@@ -24,6 +24,8 @@ let
     "nixos/modules/services/video/replay-sorcery.nix"
     "nixos/tests/xpadneo.nix"
     "pkgs/applications/audio/zynaddsubfx"
+    "pkgs/applications/editors/emacs/elisp-packages/manual-packages/acm"
+    "pkgs/applications/editors/emacs/elisp-packages/manual-packages/lsp-bridge"
     "pkgs/applications/editors/poke"
     "pkgs/applications/networking/cluster/krane"
     "pkgs/applications/networking/feedreaders/newsflash"
