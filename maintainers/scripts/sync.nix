@@ -42,6 +42,7 @@ let
     "pkgs/shells/bash/undistract-me"
     "pkgs/tools/audio/yabridge"
     "pkgs/tools/audio/yabridgectl"
+    "pkgs/tools/compression/mozlz4a"
     "pkgs/tools/games/gamemode"
     "pkgs/tools/games/ukmm"
     "pkgs/tools/graphics/goverlay"

@@ -79,6 +79,8 @@ in
 
   mozlz4 = callPackage ./tools/compression/mozlz4 { };
 
+  mozlz4a = callPackage ./tools/compression/mozlz4a { };
+
   newsflash = callPackage ./applications/networking/feedreaders/newsflash {
     webkitgtk = webkitgtk_6_0;
   };
