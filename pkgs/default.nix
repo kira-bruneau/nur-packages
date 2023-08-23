@@ -100,6 +100,11 @@ in
 
   replay-sorcery = callPackage ./tools/video/replay-sorcery { };
 
+  rocfft = callPackage ./development/libraries/rocfft {
+    inherit (llvmPackages_rocm) openmp;
+    stdenv = rocmClangStdenv;
+  };
+
   texlab = callPackage ./development/tools/misc/texlab {
     inherit (darwin.apple_sdk.frameworks) Security CoreServices;
   };
