@@ -19,5 +19,5 @@ let
   packagesJson = writeText "packages.json" (builtins.toJSON (map packageData packages));
 in
 writeShellScript "update" ''
-  echo "" | ${python3.interpreter} ${nixpkgs + "/maintainers/scripts/update.py"} ${packagesJson} --keep-going "$@"
+  echo "" | ${python3.interpreter} ${nixpkgs + "/maintainers/scripts/update.py"} ${packagesJson} --keep-going --commit "$@"
 ''
