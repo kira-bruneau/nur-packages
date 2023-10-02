@@ -238,6 +238,6 @@ stdenv.mkDerivation (finalAttrs: {
     license = with licenses; [ mit ];
     maintainers = with maintainers; [ kira-bruneau ] ++ teams.rocm.members;
     platforms = platforms.linux;
-    broken = versions.minor finalAttrs.version != versions.minor hip.version;
+    broken = versions.minor finalAttrs.version != versions.minor stdenv.cc.version;
   };
 })
