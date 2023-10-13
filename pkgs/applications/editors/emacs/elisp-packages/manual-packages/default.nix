@@ -10,6 +10,8 @@ in
 
   acm = callPackage ./acm { };
 
+  acm-terminal = callPackage ./acm-terminal { };
+
   lsp-bridge = callPackage ./lsp-bridge {
     inherit (pkgs) python3 git go gopls pyright;
   };
