@@ -47,7 +47,10 @@ in
 {
   inherit callPackage;
 
-  anytype = callPackage ./development/tools/misc/anytype { };
+  anytype = callPackage ./development/tools/misc/anytype {
+    # electron_24+ breaks wayland support
+    electron = electron_23;
+  };
 
   anytype-heart = callPackage ./development/libraries/anytype-heart { };
 

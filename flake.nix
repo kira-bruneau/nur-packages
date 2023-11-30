@@ -22,7 +22,19 @@
     } // flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
-          config.allowUnfree = true;
+          config = {
+            allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName (nixpkgs.lib.getName pkg)).name [
+              "anytype"
+              "anytype-heart"
+              "clonehero"
+              "virtualparadise"
+            ];
+
+            permittedInsecurePackages = [
+              "electron-23.3.13"
+            ];
+          };
+
           inherit system;
         };
 
