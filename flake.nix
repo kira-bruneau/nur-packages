@@ -31,7 +31,7 @@
             ];
 
             permittedInsecurePackages = [
-              "electron-23.3.13"
+              "electron-24.8.6"
             ];
           };
 

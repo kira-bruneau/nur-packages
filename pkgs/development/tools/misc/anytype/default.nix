@@ -7,6 +7,7 @@
 , pkg-config
 , libsecret
 , electron
+, libGL
 , makeDesktopItem
 }:
 
@@ -95,6 +96,7 @@ buildNpmPackage rec {
     makeWrapper ${electron}/bin/electron "$out/bin/anytype" \
       --add-flags "$out/share/anytype/resources/app.asar" \
       --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}" \
+      --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ libGL ]} \
       --inherit-argv0
 
     for size in 16x16 32x32 64x64 128x128 256x256 512x512 1024x1024; do
