@@ -14,6 +14,7 @@
 , git
 , gnused
 , nix
+, nix-fast-build
 }:
 
 let
@@ -82,6 +83,7 @@ writeShellApplication {
     git
     gnused
     nix
+    nix-fast-build
   ];
 
   text = ''
@@ -148,7 +150,7 @@ writeShellApplication {
     nix flake update
     git add flake.lock
     git commit --message 'flake.lock: update' --quiet || :
-    nix flake check
+    nix-fast-build
     git switch --quiet -
     git rebase 'HEAD@{1}'
   '';
