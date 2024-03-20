@@ -37,7 +37,6 @@ let
     "pkgs/development/python-modules/pygls"
     "pkgs/development/python-modules/pytest-datadir"
     "pkgs/development/python-modules/vdf"
-    "pkgs/development/rocm-modules/5/rocfft"
     "pkgs/development/tools/misc/cmake-language-server"
     "pkgs/development/tools/misc/texlab"
     "pkgs/games/clonehero"
