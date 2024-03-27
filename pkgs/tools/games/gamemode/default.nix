@@ -1,6 +1,7 @@
 { lib
 , stdenv
 , fetchFromGitHub
+, fetchpatch
 , libgamemode32
 , makeWrapper
 , meson
@@ -32,6 +33,12 @@ stdenv.mkDerivation (finalAttrs: {
   patches = [
     # Add @libraryPath@ template variable to fix loading the PRELOAD library
     ./preload-nix-workaround.patch
+
+    # Add homepage url to metainfo
+    (fetchpatch {
+      url = "https://patch-diff.githubusercontent.com/raw/FeralInteractive/gamemode/pull/472.patch";
+      hash = "sha256-f4exBxbhlKqkPmJT0+VWRaQyLcBvCQsLVw1cRX4vpOI=";
+    })
   ];
 
   postPatch = ''
@@ -69,7 +76,7 @@ stdenv.mkDerivation (finalAttrs: {
     "--libexecdir=libexec"
   ];
 
-  doCheck = false; # https://github.com/FeralInteractive/gamemode/issues/468
+  doCheck = true;
   nativeCheckInputs = [
     appstream
   ];
