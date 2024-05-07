@@ -16,7 +16,7 @@
 }:
 
 let
-  rev = "6802f79f9b5494996c5a5fcc8e5c987d3b53da12";
+  rev = "1d164e64fc9507b3ceb9bd8bb446b284f60e412b";
   python = python3.withPackages (ps: with ps; [
     epc
     orjson
@@ -28,13 +28,13 @@ let
 in
 melpaBuild {
   pname = "lsp-bridge";
-  version = "20240506.29";
+  version = "20240507.421";
 
   src = fetchFromGitHub {
     owner = "manateelazycat";
     repo = "lsp-bridge";
     inherit rev;
-    hash = "sha256-hdBH1lWrRHhTniz2ZnaIM7eAeKQKtTZItqtaQyepKpA=";
+    hash = "sha256-U/Am+fHqIscLMvUAGOiE0BcfZrY+temCyntOM4PIks0=";
   };
 
   commit = rev;
