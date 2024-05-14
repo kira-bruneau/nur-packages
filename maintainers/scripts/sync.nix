@@ -151,7 +151,7 @@ writeShellApplication {
     nix flake update
     git add flake.lock
     git commit --message 'flake.lock: update' --quiet || :
-    nix-fast-build
+    nix-fast-build --no-download
     git switch --quiet -
     git rebase 'HEAD@{1}'
   '';
