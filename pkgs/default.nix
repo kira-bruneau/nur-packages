@@ -30,20 +30,6 @@ let
       };
     };
 
-  removeFlakeRoot = path: lib.removePrefix "${toString ../.}/" path;
-
-  fixUpdateScriptArgs =
-    drv:
-    drv
-    // {
-      updateScript =
-        if builtins.isList drv.updateScript then
-          [ (builtins.head drv.updateScript) ]
-          ++ (builtins.map removeFlakeRoot (builtins.tail drv.updateScript))
-        else
-          drv.updateScript;
-    };
-
   pythonModulesOverlay =
     pyfinal:
     import ./development/python-modules
@@ -54,10 +40,8 @@ let
       (
         pyfinal
         // {
-          buildPythonApplication =
-            attrs: fixUpdateScriptArgs (pyfinal.buildPythonApplication (mapDisabledToBroken attrs));
-          buildPythonPackage =
-            attrs: fixUpdateScriptArgs (pyfinal.buildPythonPackage (mapDisabledToBroken attrs));
+          buildPythonApplication = attrs: pyfinal.buildPythonApplication (mapDisabledToBroken attrs);
+          buildPythonPackage = attrs: pyfinal.buildPythonPackage (mapDisabledToBroken attrs);
         }
       );
 in
