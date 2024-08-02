@@ -1,3 +1,5 @@
+{ lib }:
+
 final: prev:
 
 with final;
@@ -5,10 +7,19 @@ with final;
 let
   callPackage = prev.newScope final;
 
-  emacsPackagesOverlay = import ./applications/editors/emacs/elisp-packages/manual-packages final;
+  emacsPackagesOverlay = import ./applications/editors/emacs/elisp-packages/manual-packages {
+    inherit lib;
+    pkgs = final;
+  };
 
   linuxModulesOverlay =
-    if stdenv.isLinux then import ./os-specific/linux/modules.nix final else lfinal: lprev: { };
+    if stdenv.isLinux then
+      import ./os-specific/linux/modules.nix {
+        inherit lib;
+        pkgs = final;
+      }
+    else
+      lfinal: lprev: { };
 
   mapDisabledToBroken =
     attrs:
@@ -35,15 +46,20 @@ let
 
   pythonModulesOverlay =
     pyfinal:
-    import ./development/python-modules final (
-      pyfinal
-      // {
-        buildPythonApplication =
-          attrs: fixUpdateScriptArgs (pyfinal.buildPythonApplication (mapDisabledToBroken attrs));
-        buildPythonPackage =
-          attrs: fixUpdateScriptArgs (pyfinal.buildPythonPackage (mapDisabledToBroken attrs));
+    import ./development/python-modules
+      {
+        inherit lib;
+        pkgs = final;
       }
-    );
+      (
+        pyfinal
+        // {
+          buildPythonApplication =
+            attrs: fixUpdateScriptArgs (pyfinal.buildPythonApplication (mapDisabledToBroken attrs));
+          buildPythonPackage =
+            attrs: fixUpdateScriptArgs (pyfinal.buildPythonPackage (mapDisabledToBroken attrs));
+        }
+      );
 in
 {
   inherit callPackage;
