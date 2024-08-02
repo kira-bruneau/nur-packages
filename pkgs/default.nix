@@ -45,7 +45,20 @@ let
         }
       );
 in
-{
+(lib.foldlAttrs
+  (
+    acc: _: attrs:
+    acc // attrs
+  )
+  { }
+  (
+    lib.packagesFromDirectoryRecursive {
+      inherit callPackage;
+      directory = ./by-name;
+    }
+  )
+)
+// {
   inherit callPackage;
 
   anytype = callPackage ./development/tools/misc/anytype { };
@@ -53,8 +66,6 @@ in
   anytype-heart = callPackage ./development/libraries/anytype-heart { };
 
   anytype-nmh = callPackage ./development/libraries/anytype-nmh { };
-
-  ccache = callPackage ./by-name/cc/ccache/package.nix { };
 
   clonehero = callPackage ./games/clonehero { };
 
@@ -119,8 +130,6 @@ in
   );
 
   sudachi = qt6Packages.callPackage ./by-name/su/sudachi/package.nix { };
-
-  swaylock-fprintd = callPackage ./by-name/sw/swaylock-fprintd/package.nix { };
 
   texlab = callPackage ./development/tools/misc/texlab {
     inherit (darwin.apple_sdk.frameworks) Security CoreServices;
