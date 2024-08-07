@@ -31,7 +31,7 @@ buildGoModule rec {
     protoc-gen-js
   ];
 
-  # https://github.com/anyproto/anytype-heart/blob/v0.34.3/.github/workflows/build.yml#L354
+  # https://github.com/anyproto/anytype-heart/blob/v0.35.0/.github/workflows/build.yml#L361
   tags = [
     "envproduction"
     "nographviz"
