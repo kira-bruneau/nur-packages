@@ -65,7 +65,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = with lib; {
     description = "Installer and Launcher for the PokeMMO emulator";
     homepage = "https://pokemmo.eu";
-    license = licenses.gpl3Plus;
+    license = licenses.gpl3Only;
     maintainers = with maintainers; [ kira-bruneau ];
     platforms = platforms.linux;
     mainProgram = "pokemmo-installer";
