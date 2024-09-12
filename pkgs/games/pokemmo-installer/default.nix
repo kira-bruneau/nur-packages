@@ -8,11 +8,11 @@
   gnugrep,
   jre,
   openssl,
-  ps,
+  util-linux,
   wget,
   which,
-  xprop,
   zenity,
+  libGL,
   libpulseaudio,
   nix-update-script,
 }:
@@ -46,14 +46,18 @@ stdenv.mkDerivation (finalAttrs: {
           gnugrep
           jre
           openssl
-          ps
+          util-linux
           wget
           which
-          xprop
           zenity
         ]
       } \
-      --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ libpulseaudio ]}
+      --prefix LD_LIBRARY_PATH : ${
+        lib.makeLibraryPath [
+          libGL
+          libpulseaudio
+        ]
+      }
   '';
 
   passthru.updateScript = nix-update-script { };
