@@ -25,13 +25,13 @@ let
 in
 buildNpmPackage rec {
   pname = "anytype";
-  version = "0.43.0";
+  version = "0.43.1";
 
   src = fetchFromGitHub {
     owner = "anyproto";
     repo = "anytype-ts";
     rev = "refs/tags/v${version}";
-    hash = "sha256-PN3DNY/YVQrg1JJCwyV6q+Jmy1oTGqZ9o9O6bGcGrHE=";
+    hash = "sha256-8MS/Oe6DaTUkIw16Byfqcr7gqw7fMU0MaP2VzLjMHKE=";
   };
 
   patches = [
@@ -39,10 +39,10 @@ buildNpmPackage rec {
     ./fix-path-for-asar-unpack.patch
   ];
 
-  npmDepsHash = "sha256-4teA/WKC8VOXtsqupu/2BIZL6gDBZK4VSnq8pUKBqzE=";
+  npmDepsHash = "sha256-HiR3nNFi3tGFvlaI7MUAVRFZpZ7UO7ueaUC28hX9ru0=";
 
-  # middleware: https://github.com/anyproto/anytype-ts/blob/v0.43.0/update-ci.sh
-  # langs: https://github.com/anyproto/anytype-ts/blob/v0.43.0/electron/hook/locale.js
+  # middleware: https://github.com/anyproto/anytype-ts/blob/v0.43.1/update-ci.sh
+  # langs: https://github.com/anyproto/anytype-ts/blob/v0.43.1/electron/hook/locale.js
   postUnpack = ''
     expected_middleware_version="v$(cat "$sourceRoot/middleware.version")"
     actual_middleware_version=${lib.escapeShellArg "v${lib.escapeShellArg anytype-heart.version}"}
