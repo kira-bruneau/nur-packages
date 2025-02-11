@@ -27,7 +27,6 @@
   libXNVCtrl,
   wayland,
   nlohmann_json,
-  spdlog,
   glew,
   glfw,
   xorg,
@@ -48,6 +47,21 @@ let
     };
   };
 
+  # Derived from subprojects/imgui.wrap
+  imgui = rec {
+    version = "1.89.9";
+    src = fetchFromGitHub {
+      owner = "ocornut";
+      repo = "imgui";
+      tag = "v${version}";
+      hash = "sha256-0k9jKrJUrG9piHNFQaBBY3zgNIKM23ZA879NY+MNYTU=";
+    };
+    patch = fetchurl {
+      url = "https://wrapdb.mesonbuild.com/v2/imgui_${version}-1/get_patch";
+      hash = "sha256-myEpDFl9dr+NTus/n/oCSxHZ6mxh6R1kjMyQtChD1YQ=";
+    };
+  };
+
   # Derived from subprojects/implot.wrap
   implot = rec {
     version = "0.16";
@@ -63,18 +77,18 @@ let
     };
   };
 
-  # Derived from subprojects/imgui.wrap
-  imgui = rec {
-    version = "1.89.9";
+  # Derived from subprojects/spdlog.wrap
+  spdlog = rec {
+    version = "1.14.1";
     src = fetchFromGitHub {
-      owner = "ocornut";
-      repo = "imgui";
+      owner = "gabime";
+      repo = "spdlog";
       tag = "v${version}";
-      hash = "sha256-0k9jKrJUrG9piHNFQaBBY3zgNIKM23ZA879NY+MNYTU=";
+      hash = "sha256-F7khXbMilbh5b+eKnzcB0fPPWQqUHqAYPWJb83OnUKQ=";
     };
     patch = fetchurl {
-      url = "https://wrapdb.mesonbuild.com/v2/imgui_${version}-1/get_patch";
-      hash = "sha256-myEpDFl9dr+NTus/n/oCSxHZ6mxh6R1kjMyQtChD1YQ=";
+      url = "https://wrapdb.mesonbuild.com/v2/spdlog_${version}-1/get_patch";
+      hash = "sha256-roeOcyMw6hBI+Q1+EXxAwM0qb7iuVJLHlVgYzjqq3mw=";
     };
   };
 
@@ -118,8 +132,9 @@ stdenv.mkDerivation (finalAttrs: {
       ${lib.optionalString finalAttrs.finalPackage.doCheck ''
         cp -R --no-preserve=mode,ownership ${cmocka.src} cmocka
       ''}
-      cp -R --no-preserve=mode,ownership ${implot.src} implot-${implot.version}
       cp -R --no-preserve=mode,ownership ${imgui.src} imgui-${imgui.version}
+      cp -R --no-preserve=mode,ownership ${implot.src} implot-${implot.version}
+      cp -R --no-preserve=mode,ownership ${spdlog.src} spdlog-${spdlog.version}
       cp -R --no-preserve=mode,ownership ${vulkan-headers.src} Vulkan-Headers-${vulkan-headers.version}
     )
   '';
@@ -162,8 +177,9 @@ stdenv.mkDerivation (finalAttrs: {
 
     (
       cd subprojects
-      unzip ${implot.patch}
       unzip ${imgui.patch}
+      unzip ${implot.patch}
+      unzip ${spdlog.patch}
       unzip ${vulkan-headers.patch}
     )
   '';
@@ -171,7 +187,6 @@ stdenv.mkDerivation (finalAttrs: {
   mesonFlags =
     [
       "-Dwith_wayland=enabled"
-      "-Duse_system_spdlog=enabled"
       "-Dtests=${if finalAttrs.finalPackage.doCheck then "enabled" else "disabled"}"
     ]
     ++ lib.optionals gamescopeSupport [
@@ -201,7 +216,6 @@ stdenv.mkDerivation (finalAttrs: {
     [
       dbus
       nlohmann_json
-      spdlog
     ]
     ++ lib.optionals gamescopeSupport [
       glew
