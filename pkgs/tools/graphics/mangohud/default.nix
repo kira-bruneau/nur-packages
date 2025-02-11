@@ -1,7 +1,6 @@
 {
   lib,
   stdenv,
-  fetchFromGitLab,
   fetchFromGitHub,
   fetchurl,
   replaceVars,
@@ -15,10 +14,8 @@
   mangohud32,
   addDriverRunpath,
   appstream,
-  git,
   glslang,
   mako,
-  mesa-demos,
   meson,
   ninja,
   pkg-config,
@@ -37,16 +34,6 @@
 }:
 
 let
-  # Derived from subprojects/cmocka.wrap
-  cmocka = {
-    src = fetchFromGitLab {
-      owner = "cmocka";
-      repo = "cmocka";
-      rev = "59dc0013f9f29fcf212fe4911c78e734263ce24c";
-      hash = "sha256-IbAZOC0Q60PrKlKVWsgg/PFDV0PLb/yy+Iz/4Iziny0=";
-    };
-  };
-
   # Derived from subprojects/imgui.wrap
   imgui = rec {
     version = "1.89.9";
@@ -109,14 +96,14 @@ let
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "mangohud";
-  version = "0.7.2";
+  version = "0.8.0";
 
   src = fetchFromGitHub {
     owner = "flightlessmango";
     repo = "MangoHud";
     tag = "v${finalAttrs.version}";
     fetchSubmodules = true;
-    hash = "sha256-cj/F/DWUDm2AHTJvHgkKa+KdIrfxPWLzI570Dp4VFhs=";
+    hash = "sha256-yITiu+2l7PItAmL+6gX9p5Tvf/P8ovttGIo6kJAOqxs=";
   };
 
   outputs = [
@@ -129,9 +116,6 @@ stdenv.mkDerivation (finalAttrs: {
   postUnpack = ''
     (
       cd "$sourceRoot/subprojects"
-      ${lib.optionalString finalAttrs.finalPackage.doCheck ''
-        cp -R --no-preserve=mode,ownership ${cmocka.src} cmocka
-      ''}
       cp -R --no-preserve=mode,ownership ${imgui.src} imgui-${imgui.version}
       cp -R --no-preserve=mode,ownership ${implot.src} implot-${implot.version}
       cp -R --no-preserve=mode,ownership ${spdlog.src} spdlog-${spdlog.version}
@@ -153,7 +137,6 @@ stdenv.mkDerivation (finalAttrs: {
         curl
         gnugrep
         gnused
-        mesa-demos
         xdg-utils
       ];
 
@@ -187,17 +170,15 @@ stdenv.mkDerivation (finalAttrs: {
   mesonFlags =
     [
       "-Dwith_wayland=enabled"
-      "-Dtests=${if finalAttrs.finalPackage.doCheck then "enabled" else "disabled"}"
+      "-Dtests=disabled" # amdgpu test segfaults in nix sandbox
     ]
     ++ lib.optionals gamescopeSupport [
       "-Dmangoapp=true"
-      "-Dmangoapp_layer=true"
       "-Dmangohudctl=true"
     ];
 
   nativeBuildInputs = [
     addDriverRunpath
-    git
     glslang
     mako
     meson
@@ -235,11 +216,6 @@ stdenv.mkDerivation (finalAttrs: {
   postInstall = lib.optionalString lowerBitnessSupport ''
     ln -s ${mangohud32}/share/vulkan/implicit_layer.d/MangoHud.x86.json \
       "$out/share/vulkan/implicit_layer.d"
-
-    ${lib.optionalString gamescopeSupport ''
-      ln -s ${mangohud32}/share/vulkan/implicit_layer.d/libMangoApp.x86.json \
-        "$out/share/vulkan/implicit_layer.d"
-    ''}
   '';
 
   postFixup =
@@ -264,10 +240,6 @@ stdenv.mkDerivation (finalAttrs: {
     ''
     + lib.optionalString gamescopeSupport ''
       addDriverRunpath "$out/bin/mangoapp"
-    ''
-    + lib.optionalString finalAttrs.finalPackage.doCheck ''
-      # libcmocka.so is only used for tests
-      rm "$out/lib/libcmocka.so"
     '';
 
   passthru.updateScript = nix-update-script { };
