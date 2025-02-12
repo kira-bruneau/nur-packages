@@ -24,6 +24,7 @@
   libXNVCtrl,
   wayland,
   nlohmann_json,
+  spdlog,
   glew,
   glfw,
   xorg,
@@ -61,21 +62,6 @@ let
     patch = fetchurl {
       url = "https://wrapdb.mesonbuild.com/v2/implot_${version}-1/get_patch";
       hash = "sha256-HGsUYgZqVFL6UMHaHdR/7YQfKCMpcsgtd48pYpNlaMc=";
-    };
-  };
-
-  # Derived from subprojects/spdlog.wrap
-  spdlog = rec {
-    version = "1.14.1";
-    src = fetchFromGitHub {
-      owner = "gabime";
-      repo = "spdlog";
-      tag = "v${version}";
-      hash = "sha256-F7khXbMilbh5b+eKnzcB0fPPWQqUHqAYPWJb83OnUKQ=";
-    };
-    patch = fetchurl {
-      url = "https://wrapdb.mesonbuild.com/v2/spdlog_${version}-1/get_patch";
-      hash = "sha256-roeOcyMw6hBI+Q1+EXxAwM0qb7iuVJLHlVgYzjqq3mw=";
     };
   };
 
@@ -118,7 +104,6 @@ stdenv.mkDerivation (finalAttrs: {
       cd "$sourceRoot/subprojects"
       cp -R --no-preserve=mode,ownership ${imgui.src} imgui-${imgui.version}
       cp -R --no-preserve=mode,ownership ${implot.src} implot-${implot.version}
-      cp -R --no-preserve=mode,ownership ${spdlog.src} spdlog-${spdlog.version}
       cp -R --no-preserve=mode,ownership ${vulkan-headers.src} Vulkan-Headers-${vulkan-headers.version}
     )
   '';
@@ -162,7 +147,6 @@ stdenv.mkDerivation (finalAttrs: {
       cd subprojects
       unzip ${imgui.patch}
       unzip ${implot.patch}
-      unzip ${spdlog.patch}
       unzip ${vulkan-headers.patch}
     )
   '';
@@ -170,6 +154,7 @@ stdenv.mkDerivation (finalAttrs: {
   mesonFlags =
     [
       "-Dwith_wayland=enabled"
+      "-Duse_system_spdlog=enabled"
       "-Dtests=disabled" # amdgpu test segfaults in nix sandbox
     ]
     ++ lib.optionals gamescopeSupport [
@@ -197,6 +182,7 @@ stdenv.mkDerivation (finalAttrs: {
     [
       dbus
       nlohmann_json
+      spdlog
     ]
     ++ lib.optionals gamescopeSupport [
       glew
