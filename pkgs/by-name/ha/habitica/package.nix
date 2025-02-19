@@ -30,7 +30,7 @@ let
 in
 buildNpmPackage rec {
   pname = "habitica";
-  version = "5.33.2";
+  version = "5.33.3";
 
   outputs = [
     "out"
@@ -42,10 +42,10 @@ buildNpmPackage rec {
     owner = "HabitRPG";
     repo = "habitica";
     tag = "v${version}";
-    hash = "sha256-V5XOU8l/sokB0ByliI+ppILL0ah4aBUtQynQlLRUaxM=";
+    hash = "sha256-eMkVEMIUbtbxeKj2mxFSai8KrtPsCdn/YRFfCFVEw50=";
   };
 
-  npmDepsHash = "sha256-q9WSf+SG/dBQ4wTLeayX9gYsJDXgOHgfAfcBIvi2wQU=";
+  npmDepsHash = "sha256-sgNp3M+R8d12DuBdGLN5gFJX7oYH3bIQ8pEgm15S92s=";
 
   postPatch = ''
     sed -i /postinstall/d package.json
