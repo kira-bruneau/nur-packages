@@ -28,6 +28,7 @@
   glew,
   glfw,
   xorg,
+  nvidiaSupport ? true,
   gamescopeSupport ? true, # build mangoapp and mangohudctl
   lowerBitnessSupport ? stdenv.hostPlatform.isx86_64, # Support 32 bit on 64bit
   nix-update-script,
@@ -156,6 +157,7 @@ stdenv.mkDerivation (finalAttrs: {
       "-Dwith_wayland=enabled"
       "-Duse_system_spdlog=enabled"
       "-Dtests=disabled" # amdgpu test segfaults in nix sandbox
+      (lib.mesonEnable "with_xnvctrl" nvidiaSupport)
     ]
     ++ lib.optionals gamescopeSupport [
       "-Dmangoapp=true"
@@ -174,9 +176,8 @@ stdenv.mkDerivation (finalAttrs: {
     # Only the headers are used from these packages
     # The corresponding libraries are loaded at runtime from the app's runpath
     libX11
-    libXNVCtrl
     wayland
-  ];
+  ] ++ lib.optional nvidiaSupport libXNVCtrl;
 
   buildInputs =
     [
@@ -219,7 +220,7 @@ stdenv.mkDerivation (finalAttrs: {
       substituteInPlace $out/share/vulkan/implicit_layer.d/MangoHud.${layerPlatform}.json \
         --replace-fail "VK_LAYER_MANGOHUD_overlay" "VK_LAYER_MANGOHUD_overlay_${toString stdenv.hostPlatform.parsed.cpu.bits}"
     ''
-    + ''
+    + lib.optionalString nvidiaSupport ''
       # Add OpenGL driver and libXNVCtrl paths to RUNPATH to support NVIDIA cards
       addDriverRunpath "$out/lib/mangohud/libMangoHud.so"
       patchelf --add-rpath ${libXNVCtrl}/lib "$out/lib/mangohud/libMangoHud.so"
