@@ -154,10 +154,6 @@ in
 
   sudachi = qt6Packages.callPackage ./by-name/su/sudachi/package.nix { };
 
-  texlab = callPackage ./development/tools/misc/texlab {
-    inherit (darwin.apple_sdk.frameworks) Security CoreServices;
-  };
-
   vkbasalt = callPackage ./tools/graphics/vkbasalt rec {
     vkbasalt32 = pkgsi686Linux.callPackage ./tools/graphics/vkbasalt { inherit vkbasalt32; };
   };
