@@ -25,7 +25,7 @@
 
 buildPythonPackage rec {
   pname = "debugpy";
-  version = "1.8.14";
+  version = "1.8.15";
   format = "setuptools";
 
   disabled = pythonOlder "3.8";
@@ -34,7 +34,7 @@ buildPythonPackage rec {
     owner = "microsoft";
     repo = "debugpy";
     tag = "v${version}";
-    hash = "sha256-IOR6Dbbg/HK4/1re0BEWafwmpBMnQJCo5ojDMB2KgV4=";
+    hash = "sha256-neo7A+bjAhuvqYY4YA3O0v5aWUKV91mqajI8gpY0QYs=";
   };
 
   patches =
