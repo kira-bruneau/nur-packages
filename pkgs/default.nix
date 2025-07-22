@@ -123,8 +123,6 @@ in
     libgamemode32 = (pkgsi686Linux.callPackage ./tools/games/gamemode { inherit libgamemode32; }).lib;
   };
 
-  git-review = python3Packages.callPackage ./applications/version-management/git-review { };
-
   jakirica-client = jakirica.client;
 
   linuxPackages = recurseIntoAttrs (
