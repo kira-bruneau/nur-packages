@@ -26,7 +26,8 @@ let
     LOGGLY_CLIENT_TOKEN = "";
     LOGGLY_SUBDOMAIN = "";
     LOGGLY_TOKEN = "";
-  } // settings;
+  }
+  // settings;
 in
 buildNpmPackage rec {
   pname = "habitica";
