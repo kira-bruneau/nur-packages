@@ -50,7 +50,7 @@ in
 writeShellApplication {
   name = "update";
   text = ''
-    echo "" | ${coreutils}/bin/env -i \
+    ${coreutils}/bin/env -i \
       HOME="$HOME" \
       PATH=${
         lib.makeBinPath [
@@ -60,6 +60,10 @@ writeShellApplication {
         ]
       } \
       NIX_PATH=nixpkgs=${nixpkgs} \
-      ${python3.interpreter} ${updateScript} ${packagesJson} --keep-going --commit "$@"
+      ${python3.interpreter} ${updateScript} ${packagesJson} \
+        --keep-going \
+        --commit \
+        --skip-prompt \
+        "$@"
   '';
 }
