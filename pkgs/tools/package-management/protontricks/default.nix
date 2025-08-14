@@ -45,9 +45,9 @@ buildPythonApplication rec {
     })
   ];
 
-  nativeBuildInputs = [ setuptools-scm ];
+  build-system = [ setuptools-scm ];
 
-  propagatedBuildInputs = [
+  dependencies = [
     vdf
     pillow
   ];
