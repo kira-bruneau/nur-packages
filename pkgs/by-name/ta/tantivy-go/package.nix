@@ -18,7 +18,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
   sourceRoot = "${finalAttrs.src.name}/rust";
 
   cargoPatches = [ ./Cargo.lock.patch ];
-  cargoHash = "sha256-CF1UKff+u26pwZHOiuzzWSaqA1vK7Sup3aXxFK08Vvk=";
+  cargoHash = "sha256-Z7VyXD3LH8+TaZJXGjJ2Z4Y7bmM1h4gxIUvEdlrj5VM=";
 
   postPatch = ''
     chmod +w ../bindings.h
