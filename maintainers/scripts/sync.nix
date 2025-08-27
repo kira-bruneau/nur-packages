@@ -38,7 +38,6 @@ let
       "pkgs/development/python-modules/pygls"
       "pkgs/development/python-modules/pytest-datadir"
       "pkgs/development/python-modules/vdf"
-      "pkgs/development/tools/misc/cmake-language-server"
       "pkgs/os-specific/linux/xpadneo"
       "pkgs/tools/audio/yabridge"
       "pkgs/tools/audio/yabridgectl"
@@ -49,6 +48,7 @@ let
 
       "pkgs/by-name/cc/ccache"
       "pkgs/by-name/cl/clonehero"
+      "pkgs/by-name/cm/cmake-language-server"
       "pkgs/by-name/ga/gamemode"
       "pkgs/by-name/gi/git-review"
       "pkgs/by-name/kr/krane"

@@ -111,10 +111,6 @@ in
 // {
   inherit callPackage;
 
-  cmake-language-server = python3Packages.callPackage ./development/tools/misc/cmake-language-server {
-    inherit cmake cmake-format;
-  };
-
   emacsPackages = recurseIntoAttrs (
     emacsPackagesOverlay (prev.emacsPackages // emacsPackages) prev.emacsPackages
   );
