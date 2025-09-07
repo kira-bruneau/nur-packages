@@ -15,14 +15,6 @@
   writeScript,
 }:
 
-let
-  l10n-anytype-ts = fetchFromGitHub {
-    owner = "anyproto";
-    repo = "l10n-anytype-ts";
-    rev = "873b42df7320ebbbc80d7e2477914dac70363ef7";
-    hash = "sha256-Mr0KfXn9NO86QqgBhVjSs2przN/GtjuhJHJ9djo8Feg=";
-  };
-in
 buildNpmPackage rec {
   pname = "anytype";
   version = "0.49.2";
@@ -32,6 +24,13 @@ buildNpmPackage rec {
     repo = "anytype-ts";
     tag = "v${version}";
     hash = "sha256-8+x2FmyR5x9Zrm3t71RSyxAKcJCvnR98+fqHXjBE7aU=";
+  };
+
+  locales = fetchFromGitHub {
+    owner = "anyproto";
+    repo = "l10n-anytype-ts";
+    rev = "873b42df7320ebbbc80d7e2477914dac70363ef7";
+    hash = "sha256-Mr0KfXn9NO86QqgBhVjSs2przN/GtjuhJHJ9djo8Feg=";
   };
 
   patches = [
@@ -57,7 +56,7 @@ buildNpmPackage rec {
     ln -s ${anytype-nmh}/bin/* "$sourceRoot/dist"
 
     while IFS= read -r lang; do
-      ln -s "${l10n-anytype-ts}/locales/$lang.json" "$sourceRoot/dist/lib/json/lang"
+      ln -s "$locales/locales/$lang.json" "$sourceRoot/dist/lib/json/lang"
     done < <(jq -r '.enabledLangs | .[]'  "$sourceRoot/electron/json/constant.json")
   '';
 
