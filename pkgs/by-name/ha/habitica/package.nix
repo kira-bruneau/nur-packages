@@ -6,9 +6,9 @@
   jq,
   makeWrapper,
   krb5,
-  nix-update-script,
   callPackage,
   settings ? { },
+  writeScript,
 }:
 
 let
@@ -113,7 +113,15 @@ buildNpmPackage (finalAttrs: {
   passthru = {
     inherit settings;
     client = callPackage ./client.nix { settings = resolvedSettings; };
-    updateScript = nix-update-script { };
+    updateScript = writeScript "update-habitica" ''
+      #!/usr/bin/env nix-shell
+      #!nix-shell -i bash -p nix-update
+
+      set -euo pipefail
+
+      nix-update habitica
+      nix-update habitica.client --version=skip
+    '';
   };
 
   meta = {
