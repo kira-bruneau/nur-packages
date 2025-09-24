@@ -5,7 +5,23 @@ final: prev:
 with final;
 
 let
-  callPackage = prev.newScope final;
+  callPackage = prev.newScope (
+    final
+    // {
+      emacsPackages = prev.emacsPackages.overrideScope emacsPackagesOverlay;
+      linuxPackages = prev.linuxPackages.overrideScope linuxModulesOverlay;
+    }
+    // (builtins.foldl' (
+      acc: name:
+      if builtins.match "python[0-9]+Packages" name != null then
+        acc
+        // {
+          ${name} = prev.${name}.overrideScope pythonModulesOverlay;
+        }
+      else
+        acc
+    ) { } (builtins.attrNames prev))
+  );
 
   emacsPackagesOverlay = import ./applications/editors/emacs/elisp-packages/manual-packages {
     inherit lib;
@@ -117,10 +133,8 @@ in
 
   mangohud = callPackage ./tools/graphics/mangohud rec {
     libXNVCtrl = prev.linuxPackages.nvidia_x11.settings.libXNVCtrl;
-    python3Packages = prev.python3Packages;
     mangohud32 = pkgsi686Linux.callPackage ./tools/graphics/mangohud {
       libXNVCtrl = prev.pkgsi686Linux.linuxPackages.nvidia_x11.settings.libXNVCtrl;
-      python3Packages = prev.pkgsi686Linux.python3Packages;
       inherit mangohud32;
     };
   };
