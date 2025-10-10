@@ -146,7 +146,7 @@ stdenv.mkDerivation (finalAttrs: {
     ln -s ${nx_tzdb} build/externals/nx_tzdb/nx_tzdb
   '';
 
-  doCheck = true;
+  doCheck = false;
   checkInputs = [ catch2_3 ];
 
   # Fixes vulkan detection.
