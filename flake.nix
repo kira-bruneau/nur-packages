@@ -90,7 +90,6 @@
               paths = paths.nix;
               settings = {
                 variable-lookup = true;
-                suppress = [ "sema-primop-overridden" ];
               };
             };
 
