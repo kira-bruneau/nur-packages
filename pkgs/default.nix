@@ -114,10 +114,6 @@ in
     emacsPackagesOverlay (prev.emacsPackages // emacsPackages) prev.emacsPackages
   );
 
-  gamemode = callPackage ./tools/games/gamemode rec {
-    libgamemode32 = (pkgsi686Linux.callPackage ./tools/games/gamemode { inherit libgamemode32; }).lib;
-  };
-
   jakirica-client = jakirica.client;
 
   linuxPackages = lib.recurseIntoAttrs (
