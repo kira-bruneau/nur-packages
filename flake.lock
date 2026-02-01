@@ -10,11 +10,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1766881518,
-        "narHash": "sha256-Zah4LgJrVdzmMMHQnc7rZp3rzftvyX2+oj8SY29WsNs=",
+        "lastModified": 1769392658,
+        "narHash": "sha256-zbG/dyMFwMSIEMWWfOnocIoiS5YBV+AMyPpgNXfmFCA=",
         "owner": "kira-bruneau",
         "repo": "flake-linter",
-        "rev": "808d6165a7f133640eb79d8c64d637ad4ba5ff1c",
+        "rev": "562d45466c2ea90a5b7a78c24b5289b4a7f1e2a3",
         "type": "gitlab"
       },
       "original": {
