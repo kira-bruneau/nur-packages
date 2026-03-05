@@ -120,14 +120,6 @@ in
     linuxModulesOverlay (prev.linuxPackages_latest // linuxPackages) prev.linuxPackages_latest
   );
 
-  mangohud = callPackage ./tools/graphics/mangohud rec {
-    libXNVCtrl = prev.linuxPackages.nvidia_x11.settings.libXNVCtrl;
-    mangohud32 = pkgsi686Linux.callPackage ./tools/graphics/mangohud {
-      libXNVCtrl = prev.pkgsi686Linux.linuxPackages.nvidia_x11.settings.libXNVCtrl;
-      inherit mangohud32;
-    };
-  };
-
   vkbasalt = callPackage ./tools/graphics/vkbasalt rec {
     vkbasalt32 = pkgsi686Linux.callPackage ./tools/graphics/vkbasalt { inherit vkbasalt32; };
   };
