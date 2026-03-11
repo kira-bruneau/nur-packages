@@ -9,7 +9,7 @@ let
     final
     // {
       emacsPackages = prev.emacsPackages.overrideScope emacsPackagesOverlay;
-      linuxPackages = prev.linuxPackages_latest.overrideScope linuxModulesOverlay;
+      linuxPackages = prev.linuxPackages.extend linuxModulesOverlay;
     }
     // (builtins.foldl' (
       acc: name:
@@ -28,14 +28,10 @@ let
     pkgs = final;
   };
 
-  linuxModulesOverlay =
-    if stdenv.hostPlatform.isLinux then
-      import ./os-specific/linux/modules.nix {
-        inherit lib;
-        pkgs = final;
-      }
-    else
-      lfinal: lprev: { };
+  linuxModulesOverlay = import ./os-specific/linux/modules.nix {
+    inherit lib;
+    pkgs = final;
+  };
 
   mapDisabledToBroken =
     attrs:
