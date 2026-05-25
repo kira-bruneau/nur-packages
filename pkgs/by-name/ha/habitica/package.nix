@@ -2,7 +2,7 @@
   lib,
   buildNpmPackage,
   fetchFromGitHub,
-  nodejs_20,
+  nodejs,
   jq,
   makeWrapper,
   krb5,
@@ -56,7 +56,7 @@ buildNpmPackage (finalAttrs: {
   makeCacheWritable = true;
   npmFlags = [ "--legacy-peer-deps" ];
 
-  nodejs = nodejs_20;
+  nodejs = nodejs;
 
   nativeBuildInputs = [
     jq
@@ -99,7 +99,7 @@ buildNpmPackage (finalAttrs: {
       website/common/transpiled-babel \
       website/transpiled-babel
 
-    makeWrapper ${lib.getExe nodejs_20} "$out/bin/habitica" \
+    makeWrapper ${lib.getExe nodejs} "$out/bin/habitica" \
       --set NODE_ENV production \
       --chdir "$out/lib/node_modules/habitica" \
       --add-flags website/transpiled-babel/index.js
