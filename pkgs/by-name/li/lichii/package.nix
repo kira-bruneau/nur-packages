@@ -29,6 +29,7 @@
   pkg-config,
   python3,
   qt6,
+  rt,
   simpleini,
   sirit,
   spirv-headers,
@@ -61,6 +62,13 @@ let
     };
   });
 
+  xxhash = fetchFromGitHub {
+    owner = "Cyan4973";
+    repo = "xxHash";
+    tag = "v0.8.3";
+    hash = "sha256-h6kohM+NxvQ89R9NEXZcYBG2wPOuB4mcyPfofKrx9wQ=";
+  };
+
   zbic = fetchFromGitHub {
     owner = "kinnay";
     repo = "zbic";
@@ -71,13 +79,13 @@ in
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "lichii";
-  version = "93";
+  version = "228";
 
   src = fetchFromGitHub {
     owner = "zortos293";
     repo = "Lichii";
     tag = "build-${finalAttrs.version}";
-    hash = "sha256-2UnbfvLqlgHdQh3m8YKXpOnXxHomshXiLUeb34REMl0=";
+    hash = "sha256-7BzjWq+sGHDQBSsEgLlokexKtzDzl70ftIoL1wtk9T8=";
   };
 
   strictDeps = true;
@@ -118,6 +126,7 @@ stdenv.mkDerivation (finalAttrs: {
     qt6.qtwebengine
     qt6.qtcharts
     # intentionally omitted: renderdoc - heavy, developer only
+    rt
     sdl3
     stb
     simpleini
@@ -142,9 +151,9 @@ stdenv.mkDerivation (finalAttrs: {
       --replace-fail 'set(zstd_FORCE_BUNDLED ON)' ""
 
     substituteInPlace externals/CMakeLists.txt \
-      --replace-fail 'AddJsonPackage(NAME zbic DOWNLOAD_ONLY)' ""
-
-    substituteInPlace externals/CMakeLists.txt \
+      --replace-fail 'AddJsonPackage(NAME xxhash DOWNLOAD_ONLY)' "" \
+      --replace-fail ''\'''${xxhash_SOURCE_DIR}' ${xxhash} \
+      --replace-fail 'AddJsonPackage(NAME zbic DOWNLOAD_ONLY)' "" \
       --replace-fail ''\'''${zbic_SOURCE_DIR}' ${zbic}
   '';
 
