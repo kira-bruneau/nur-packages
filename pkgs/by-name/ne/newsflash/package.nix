@@ -18,7 +18,6 @@
   gtksourceview5,
   libadwaita,
   libglycin,
-  libxml2,
   openssl,
   aws-lc,
   sqlite,
@@ -78,7 +77,6 @@ stdenv.mkDerivation (finalAttrs: {
     gtksourceview5
     libadwaita
     libglycin
-    libxml2
     openssl
     aws-lc
     sqlite
