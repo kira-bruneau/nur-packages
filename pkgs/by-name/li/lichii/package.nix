@@ -165,30 +165,29 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   cmakeFlags = [
-    (lib.cmakeBool "BUILD_TESTING" finalAttrs.finalPackage.doCheck)
-    (lib.cmakeBool "YUZU_TESTS" false) # some timer tests are flaky
+    # don't treat warnings as errors
+    (lib.cmakeBool "ENABLE_WERROR" false)
 
     # use system libraries
     (lib.cmakeBool "CPMUTIL_FORCE_SYSTEM" true)
-    (lib.cmakeFeature "YUZU_TZDB_PATH" "${tzdb_to_nx}")
-
-    # enable some optional features
-    (lib.cmakeBool "YUZU_USE_QT_WEB_ENGINE" true)
-    (lib.cmakeBool "YUZU_USE_QT_MULTIMEDIA" true)
-    (lib.cmakeBool "ENABLE_QT_TRANSLATION" true)
-    (lib.cmakeBool "ENABLE_LTO" true)
-
-    # don't treat warnings as errors
-    (lib.cmakeBool "ENABLE_WERROR" false)
+    (lib.cmakeFeature "LICHII_TZDB_PATH" "${tzdb_to_nx}")
 
     # disable features not packaged in Nix
     (lib.cmakeBool "ENABLE_RESHADE" false)
 
-    # We dont want to bother upstream with potentially outdated compat reports
-    (lib.cmakeBool "YUZU_ENABLE_COMPATIBILITY_REPORTING" false)
+    # enable some optional features
+    (lib.cmakeBool "LICHII_USE_QT_WEB_ENGINE" true)
+    (lib.cmakeBool "LICHII_USE_QT_MULTIMEDIA" true)
+    (lib.cmakeBool "ENABLE_QT_TRANSLATION" true)
+    (lib.cmakeBool "ENABLE_LTO" true)
 
+    # title formats
     (lib.cmakeFeature "TITLE_BAR_FORMAT_IDLE" "${finalAttrs.pname} | ${finalAttrs.version} (nixpkgs) {}")
     (lib.cmakeFeature "TITLE_BAR_FORMAT_RUNNING" "${finalAttrs.pname} | ${finalAttrs.version} (nixpkgs) | {}")
+
+    # tests
+    (lib.cmakeBool "BUILD_TESTING" finalAttrs.finalPackage.doCheck)
+    (lib.cmakeBool "LICHII_TESTS" false) # some timer tests are flaky
   ];
 
   postInstall = ''
